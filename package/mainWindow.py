@@ -335,6 +335,7 @@ class App(QWidget):
         m = folium.Map(location=[38, 128], zoom_start=10, tiles=self.map_tile, attr=self.attr) #노드 좌표 사용자 입력
         m.save('C:/gui/result2.html')
         self.web.load(QUrl('C:/gui/result2.html'))
+        
         for i in range(len(default_format.index)):
             for j in range(4,len(default_format.columns)):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(default_format.iloc[i, j])))
@@ -592,6 +593,9 @@ class App(QWidget):
 
         return link_tr2
     
+    
+    
+    
     def linkDraw(self):
         link_result=self.linkCSVopen()
         print(link_result)
@@ -622,4 +626,3 @@ class App(QWidget):
 
         link_map.save('C:/gui/result.html')
         self.web.load(QUrl('C:/gui/result.html'))
-        
