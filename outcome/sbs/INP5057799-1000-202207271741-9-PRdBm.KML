@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Document>
+	<name>INP5057799-1000-202207271741-9-PRdBm</name>
+	<GroundOverlay>
+		<name>RF Analysis</name>
+		<color>6effffff</color>
+		<Icon>
+			<href>INP5057799-1000-202207271741-9-PRdBm.png</href>
+			<viewBoundScale>0.90</viewBoundScale>
+		</Icon>
+		<LatLonBox>
+			<north>37.847442</north>
+			<south>37.510775</south>
+			<east>128.902945</east>
+			<west>128.405908</west>
+		</LatLonBox>
+	</GroundOverlay>
+	<StyleMap id="msn_open-diamond">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_open-diamond</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_open-diamond</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_open-diamond">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle></ListStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_open-diamond">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle></ListStyle>
+	</Style>
+	<ScreenOverlay id="Legend">
+		<name>Palette</name>
+		<description>dBm</description>
+		<Icon>
+			<href>INP5057799-1000-202207271741-9-PRdBmLeg.png</href>
+		</Icon>
+		<description>dBm</description>
+		<overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+		<screenXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+		<rotationXY x="0" y="0" xunits="fraction" yunits="fraction"/>
+	</ScreenOverlay>
+	<Placemark>
+		<name>ST: hctr1</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 128.5749
+latitude: 37.6519
+altitude: 542
+address: A
+frequency 1429.500000 MHz
+power: 89.125094 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>A</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>128.574874</longitude>
+			<latitude>37.651913</latitude>
+			<altitude>542.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>89.125094</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>128.574874,37.651913,542.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr2</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 128.6501
+latitude: 37.7162
+altitude: 1048
+address: B
+frequency 1429.500000 MHz
+power: 89.125094 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>B</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>128.650085</longitude>
+			<latitude>37.716153</latitude>
+			<altitude>1048.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>89.125094</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>128.650085,37.716153,1048.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr3</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 128.6798
+latitude: 37.6751
+altitude: 869
+address: A
+frequency 1429.500000 MHz
+power: 89.125094 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>A</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>128.679763</longitude>
+			<latitude>37.675137</latitude>
+			<altitude>869.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>89.125094</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>128.679763,37.675137,869.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr4</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 128.7315
+latitude: 37.6652
+altitude: 832
+address: B
+frequency 1429.500000 MHz
+power: 89.125094 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>B</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>128.731506</longitude>
+			<latitude>37.665173</latitude>
+			<altitude>832.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>89.125094</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>128.731506,37.665173,832.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr5</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 128.7037
+latitude: 37.7033
+altitude: 824
+address: C
+frequency 1429.500000 MHz
+power: 89.125094 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>C</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>128.703689</longitude>
+			<latitude>37.703320</latitude>
+			<altitude>824.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>89.125094</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>128.703689,37.703320,824.000000</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>

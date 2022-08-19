@@ -1,0 +1,1 @@
+From Tx #;Long;Lat;Callsign;Address;NetID;Rad. Power (W);Height (m);Azimuth (deg);Antenna;To Rx #;Long;Lat;Callsign;Address;NetID;Height (m);Azimuth (deg);Antenna;FSR dBuV/m;Pr dBm; ToA us;cx #;Frequency MHz;Polar;Distance m;Azimuth Tx->Rx (deg);Tilt Tx->Rx (deg);Azimuth Rx->Tx (deg);Tilt Rx->Tx (deg);Ant_Tx_atten (dB);Ant_Rx_atten (dB);Path loss (dB);Path;Resolution (m)

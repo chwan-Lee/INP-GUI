@@ -1,0 +1,303 @@
+ #-*- coding: utf-8 -*- 
+
+import os
+import sys
+import subprocess
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtWebEngineWidgets import *
+import pandas as pd
+import pypyodbc
+from sqlalchemy import create_engine
+import folium
+
+import data
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
+class App(QWidget):
+
+    def __init__(self):
+        super().__init__()
+        self.TITLE  = "망계획도구"
+        self.LEFT   = 150
+        self.TOP    = 100
+        self.WIDTH  = 1600
+        self.HEIGHT = 800
+        self.setupUI()
+
+
+    def setupUI(self):
+        self.setWindowTitle(self.TITLE)
+        self.setWindowIcon(QIcon('./img/favicon.png'))
+        self.setGeometry(self.LEFT, self.TOP, self.WIDTH, self.HEIGHT)
+
+        # 로고
+        self.lbl_sv_logo = QLabel(self)
+        self.lbl_sv_logo.setPixmap(QPixmap('./img/solvit_logo.png'))
+        self.lbl_sv_logo.setFixedHeight(50)
+        self.lbl_sv_logo.setFixedWidth(140)
+
+        # "csv 파일 열기" 버튼
+        self.csvOpenBtn = QPushButton("시나리오 파일 열기")
+        self.csvOpenBtn.setFixedHeight(30)
+        self.csvOpenBtn.clicked.connect(self.csvOpenBtnClicked)
+
+        # v2
+        # "csv → mdb 변환" 버튼
+        # self.csvToMdbBtn = QPushButton("csv → mdb 변환")
+        # self.csvToMdbBtn.setFixedHeight(40)
+        # self.csvToMdbBtn.clicked.connect(self.csvToMdbBtnClicked)
+
+        # "htz 분석 시작" 버튼
+        self.covBtn = QPushButton("커버리지 분석")
+        self.covBtn.setFixedHeight(30)
+        self.covBtn.clicked.connect(self.covBtnClicked)
+
+        # "링크 분석 시작" 버튼
+        self.linkBtn = QPushButton("링크 연결성 분석")
+        self.linkBtn.setFixedHeight(30)
+        self.linkBtn.clicked.connect(self.linkBtnClicked)
+                
+        # "중계소배치 시작" 버튼
+        self.nodeBtn = QPushButton("중계소 배치")
+        self.nodeBtn.setFixedHeight(30)
+        self.nodeBtn.clicked.connect(self.nodeBtnClicked)
+
+        # "주파수 할당 시작" 버튼
+        self.freqBtn = QPushButton("주파수 할당")
+        self.freqBtn.setFixedHeight(30)
+        self.freqBtn.clicked.connect(self.freqBtnClicked)
+
+        # # "간섭분석 시작" 버튼
+        # self.inferBtn = QPushButton("간섭 분석")
+        # self.inferBtn.setFixedHeight(20)
+        # self.inferBtn.clicked.connect(self.inferBtnClicked)
+
+        # # "Google Earth pro 실행" 버튼
+        # self.runEarthBtn = QPushButton("Google Earth pro 실행")
+        # self.runEarthBtn.setFixedHeight(40)
+        # self.runEarthBtn.clicked.connect(self.runEarthBtnClicked)
+
+        # # "커버리지 표시" 버튼
+        # self.covImageBtn = QPushButton("커버리지 이미지(테스트)")
+        # self.covImageBtn.setFixedHeight(40)
+        # self.covImageBtn.clicked.connect(self.covImageBtnClicked)
+
+        # "csv 파일 열기" 버튼
+        self.csvOpenBtn = QPushButton("시나리오 파일 열기")
+        self.csvOpenBtn.setFixedHeight(30)
+        self.csvOpenBtn.clicked.connect(self.csvOpenBtnClicked)
+
+        # "htz 분석 시작" 버튼
+        self.covBtn = QPushButton("커버리지 분석")
+        self.covBtn.setFixedHeight(30)
+        self.covBtn.clicked.connect(self.covBtnClicked)
+
+        # "링크 분석 시작" 버튼
+        self.linkBtn = QPushButton("링크 연결성 분석")
+        self.linkBtn.setFixedHeight(30)
+        self.linkBtn.clicked.connect(self.linkBtnClicked)
+                
+        # "중계소배치 시작" 버튼
+        self.nodeBtn = QPushButton("중계소 배치")
+        self.nodeBtn.setFixedHeight(30)
+        self.nodeBtn.clicked.connect(self.nodeBtnClicked)
+
+        # "주파수 할당 시작" 버튼
+        self.freqBtn = QPushButton("주파수 할당")
+        self.freqBtn.setFixedHeight(30)
+        self.freqBtn.clicked.connect(self.freqBtnClicked)
+
+        # "종료" 버튼
+        self.exitBtn = QPushButton("프로그램 종료")
+        self.exitBtn.setFixedHeight(30)
+        self.exitBtn.clicked.connect(self.exitBtnClicked)
+
+        # 좌측 메뉴 레이아웃 설정        
+        lvLay = QVBoxLayout()
+        lvLay.addWidget(self.lbl_sv_logo)
+        lvLay.addChildWidget(self.csvOpenBtn)
+        #lvLay.addWidget(self.csvToMdbBtn)
+        lvLay.addWidget(self.covBtn)
+        lvLay.addWidget(self.linkBtn)
+        lvLay.addWidget(self.nodeBtn)
+        lvLay.addWidget(self.freqBtn)
+        # lvLay.addWidget(self.inferBtn)
+        # lvLay.addWidget(self.runEarthBtn)
+        # lvLay.addWidget(self.covImageBtn)
+        lvLay.addStretch(1)
+        lvLay.add(self.csvOpenBtn)
+        lvLay.addWidget(self.covBtn)
+        lvLay.addWidget(self.linkBtn)
+        lvLay.addWidget(self.nodeBtn)
+        lvLay.addWidget(self.freqBtn)
+        lvLay.addWidget(self.exitBtn)
+        lvLay.addStretch(1)
+
+        # 지도
+        self.web = QWebEngineView()
+
+        # 테이블
+        self.tableColumn = []
+        self.tableWidget = QTableWidget()
+
+        # 우측 지도, 테이블 레이아웃 설정
+        rvLay = QVBoxLayout()
+        rvLay.addWidget(self.web)
+        rvLay.setStretchFactor(self.web, 2)
+        rvLay.addWidget(self.tableWidget)
+        rvLay.setStretchFactor(self.tableWidget, 1)
+
+        # table double clicked
+        self.tableWidget.doubleClicked.connect(self.tblCellDblClicked)
+
+        # main Layout
+        mainLay = QHBoxLayout()
+        mainLay.addLayout(lvLay)
+        mainLay.addLayout(rvLay)
+
+        # layout 세팅
+        self.setLayout(mainLay)
+    
+
+    def tblCellDblClicked(self):
+        for currentQTableWidgetItem in self.tableWidget.selectedItems():
+            print("row: {0}, col: {1}, contents: {2}".format(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text()))
+            currentQTableWidgetItem.setForeground(QBrush(QColor(255, 0, 0)))
+
+
+    def csvOpenBtnClicked(self):
+        fname = QFileDialog.getOpenFileName(self, '파일 열기', '', 'csv(*.csv)')
+        
+        if fname[0]:
+            data = pd.read_csv(fname[0])
+
+            # rename col
+            data.columns = ['CALL_SIGN', 'ADDRESS', 'COORD_X', 'COORD_Y', 'TYPE_COORD', 'H_ANTENNA', 'FREQUENCY', 'BANDWIDTH', 'BANDWIDTHRX', 'AZIMUTH', 'NOMINAL_POWER', 'GAIN', 'GAINRX', 'LOSSES', 'LOSSESRX', 'WiencodeH', 'WiencodeV', 'THRESHOLD', 'THRESHOLDRX']
+            data['Antenna_nameH'] = data['WiencodeH']
+            data['Antenna_nameV'] = data['WiencodeV']
+            self.tableHdrLbl = list(data.columns)
+        
+            self.tableWidget.setColumnCount(len(data.columns))
+            self.tableWidget.setHorizontalHeaderLabels(self.tableHdrLbl)
+            self.tableWidget.setRowCount(len(data.index))
+
+            m = folium.Map(location=[data.iloc[0, 3], data.iloc[0, 2]], zoom_start=11, tiles='Stamen Terrain')
+            for i in range(len(data.index)):
+                callSign = ''
+                lon = ''
+                lat = ''
+                for j in range(len(data.columns)):
+                    if self.tableHdrLbl[j] == 'CALL_SIGN':
+                        callSign = str(data.iloc[i, j])
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(callSign))
+                    elif self.tableHdrLbl[j] == 'COORD_X':
+                        lon = round(data.iloc[i, j], 6)
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(str(lon)))
+                    elif self.tableHdrLbl[j] == 'COORD_Y':
+                        lat = round(data.iloc[i, j], 6)
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(str(lat)))
+                    else:
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(str(data.iloc[i, j])))
+                
+                folium.Marker([lat, lon], popup=callSign, icon=folium.Icon(icon='cloud')).add_to(m)
+
+            m.save('C:/gui/result.html')
+            self.web.load(QUrl('C:/gui/result.html'))
+        else:
+            QMessageBox.about(self, 'Info', '파일을 선택하지 않았습니다.')
+
+        colCnt = self.tableWidget.columnCount()
+        rowCnt = self.tableWidget.rowCount()
+        headers = [str(self.tableWidget.horizontalHeaderItem(i).text()) for i in range(colCnt)]
+
+        df_list = []
+        for row in range(rowCnt):
+            df_list2 = []
+            for col in range(colCnt):
+                table_item = self.tableWidget.item(row, col)
+                df_list2.append('' if table_item is None else str(table_item.text()))
+            df_list.append(df_list2)
+        df = pd.DataFrame(df_list, columns=headers)
+        
+
+        conn = pypyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=./data/HTZtables.mdb;')
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM STATIONX64')
+
+        for row in range(rowCnt):
+            query = """INSERT INTO STATIONX64(ID, CALL_SIGN, ADDRESS, COORD_X, COORD_Y,
+                                              TYPE_COORD, H_ANTENNA, FREQUENCY, BANDWIDTH, BANDWIDTHRX,
+                                              AZIMUTH, NOMINAL_POWER, GAIN, GAINRX, LOSSES,
+                                              LOSSESRX, WiencodeH, WiencodeV, THRESHOLD, THRESHOLDRX)
+                       VALUES({0}, '{1}', '{2}', {3}, {4},
+                             '{5}', {6}, {7}, {8}, {9},
+                             {10}, {11}, {12}, {13}, {14},
+                             '{15}', '{16}', '{17}', {18}, {19})""".format(
+                           row, df.iloc[row]['CALL_SIGN'], df.iloc[row]['ADDRESS'], df.iloc[row]['COORD_X'], df.iloc[row]['COORD_Y'],
+                           df.iloc[row]['TYPE_COORD'], df.iloc[row]['H_ANTENNA'], df.iloc[row]['FREQUENCY'], df.iloc[row]['BANDWIDTH'], df.iloc[row]['BANDWIDTHRX'],
+                           df.iloc[row]['AZIMUTH'], df.iloc[row]['NOMINAL_POWER'], df.iloc[row]['GAIN'], df.iloc[row]['GAINRX'], df.iloc[row]['LOSSES'],
+                           df.iloc[row]['LOSSESRX'], df.iloc[row]['WiencodeH'], df.iloc[row]['WiencodeV'], df.iloc[row]['THRESHOLD'], df.iloc[row]['THRESHOLDRX'])
+            cursor.execute(query)
+        
+        cursor.commit()
+
+        cursor.close()
+        conn.close()
+
+        #path = os.path.realpath('.\\data')
+        # os.startfile(path)
+
+
+    def covBtnClicked(self):
+        print('covBtnClicked()')
+        os.system(".\\batch\\Coverage.bat")
+
+    def linkBtnClicked(self):
+        print('linkBtnClicked')
+        os.system(".\\batch\\P2P.bat")
+
+    def nodeBtnClicked(self):
+        print('nodeBtnClicked')
+        os.system(".\\batch\\Nodes.bat")
+
+    def freqBtnClicked(self):
+        print('freqBtnClicked')
+        os.system(".\\batch\\freq_p2p.bat")
+
+    # def inferBtnClicked(self):
+    #     print('inferBtnClicked')
+    #     os.system(".\\batch\\interference.bat")
+
+    # def runEarthBtnClicked(self):
+    #     print('runEarthBtnClicked')
+    #     subprocess.call("C:\\Program Files\\Google\\Google Earth Pro\\client\\googleearth.exe")
+
+    # def covImageBtnClicked(self):
+    #     #self.web.load(QUrl('C:/gui/result.html'))\
+    #     m = folium.Map.layer([37,128], zoom_start=11, tiles='Stamen Terrain')
+    #     #m= self.web.load(QUrl('C:/gui/result.html'))
+    #     folium.raster_layers.ImageOverlay(
+    #         image="./img/1234.png",
+    #         name="coverage",
+    #         bounds=[[36.5, 127.5], [37, 128]],
+    #         opacity=1,
+    #         interactive=False,
+    #         cross_origin=False,
+    #         zindex=1,
+    #         alt="1234.png",
+    #     ).add_to(m)
+
+    #     folium.LayerControl().add_to(m)
+
+    #     m.save('C:/gui/result.html')
+    #     self.web.load(QUrl('C:/gui/result.html'))
+                
+
+    def exitBtnClicked(self):
+        reply = QMessageBox.question(self, "종료", "프로그램을 종료하시겠습니까?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            sys.exit()

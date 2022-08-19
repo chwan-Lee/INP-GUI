@@ -1,0 +1,1205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Folder xmlns="http://www.opengis.net/kml/2.2">
+  <name>Mesh Analysis</name>
+  <Folder>
+    <name>Units (MU, RE, CC)</name>
+    <Style id="MUNode">
+      <IconStyle>
+        <color>ff00ff00</color>
+        <colorMode>normal</colorMode>
+        <scale>1.1000000000000001</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="MUFNode">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <colorMode>normal</colorMode>
+        <scale>1.1000000000000001</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="RENode">
+      <IconStyle>
+        <color>ffffff00</color>
+        <colorMode>normal</colorMode>
+        <scale>1.1000000000000001</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="CCNode">
+      <IconStyle>
+        <color>ff0080ff</color>
+        <colorMode>normal</colorMode>
+        <scale>1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/ranger_station.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Placemark>
+      <name>CC</name>
+      <styleUrl>#CCNode</styleUrl>
+      <ExtendedData>
+        <Data name="Node ID">
+          <value>CC</value>
+        </Data>
+        <Data name="Nbr of CCs">
+          <value>0</value>
+        </Data>
+        <Data name="Reachable CCs" />
+        <Data name="Uni connections">
+          <value>7</value>
+        </Data>
+        <Data name="Type">
+          <value>CC</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <extrude>true</extrude>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.27096599999999,37.205497999999999,30</coordinates>
+      </Point>
+    </Placemark>
+    <Folder>
+      <name>Hop level = 0</name>
+      <Placemark>
+        <name>c371403</name>
+        <styleUrl>#MUNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>c371403</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>1</value>
+          </Data>
+          <Data name="Reachable CCs">
+            <value>CC,</value>
+          </Data>
+          <Data name="Uni connections">
+            <value>3</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+          <Data name="Hops to CC">
+            <value>0</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.48571799999999,37.219928000000003,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>c739317</name>
+        <styleUrl>#MUNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>c739317</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>1</value>
+          </Data>
+          <Data name="Reachable CCs">
+            <value>CC,</value>
+          </Data>
+          <Data name="Uni connections">
+            <value>3</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+          <Data name="Hops to CC">
+            <value>0</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.21928399999999,37.243976000000004,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>c053737</name>
+        <styleUrl>#MUNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>c053737</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>1</value>
+          </Data>
+          <Data name="Reachable CCs">
+            <value>CC,</value>
+          </Data>
+          <Data name="Uni connections">
+            <value>4</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+          <Data name="Hops to CC">
+            <value>0</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.39181500000001,37.174028,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>c678600</name>
+        <styleUrl>#MUNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>c678600</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>1</value>
+          </Data>
+          <Data name="Reachable CCs">
+            <value>CC,</value>
+          </Data>
+          <Data name="Uni connections">
+            <value>1</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+          <Data name="Hops to CC">
+            <value>0</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.38299599999999,37.065323999999997,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>c975536</name>
+        <styleUrl>#MUNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>c975536</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>1</value>
+          </Data>
+          <Data name="Reachable CCs">
+            <value>CC,</value>
+          </Data>
+          <Data name="Uni connections">
+            <value>2</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+          <Data name="Hops to CC">
+            <value>0</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.34953300000001,37.096192000000002,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MU01</name>
+        <styleUrl>#MUNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>MU01</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>1</value>
+          </Data>
+          <Data name="Reachable CCs">
+            <value>CC,</value>
+          </Data>
+          <Data name="Uni connections">
+            <value>5</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+          <Data name="Hops to CC">
+            <value>0</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.38561999999999,37.254931999999997,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>c809427</name>
+        <styleUrl>#MUNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>c809427</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>1</value>
+          </Data>
+          <Data name="Reachable CCs">
+            <value>CC,</value>
+          </Data>
+          <Data name="Uni connections">
+            <value>1</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+          <Data name="Hops to CC">
+            <value>0</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.15562399999999,37.107163,30</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Disconnected</name>
+      <Placemark>
+        <name>c008955</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>c008955</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.620285,37.203806999999998,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>c029292</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>c029292</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.12767,37.370837000000002,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>c056727</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>c056727</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.20500200000001,37.414622999999999,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>c251512</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>c251512</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>127.959335,37.086753000000002,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>c666600</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>c666600</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.09625199999999,36.978110999999998,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>c500586</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>c500586</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.47053500000001,37.408346999999999,30</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Folder>
+  <Folder>
+    <name>RF P2P Links</name>
+    <Style id="Links">
+      <LineStyle>
+        <color>7d00ff00</color>
+        <colorMode>normal</colorMode>
+      </LineStyle>
+    </Style>
+    <Placemark>
+      <name><![CDATA[c371403->MU01(-81.51 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-81.51</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>9697</value>
+        </Data>
+        <Data name="From">
+          <value>c371403</value>
+        </Data>
+        <Data name="To">
+          <value>MU01</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.48571799999999,37.219928000000003,30
+128.38561999999999,37.254931999999997,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c371403->c053737(-88.84 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-88.84</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>9781.84</value>
+        </Data>
+        <Data name="From">
+          <value>c371403</value>
+        </Data>
+        <Data name="To">
+          <value>c053737</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.48571799999999,37.219928000000003,30
+128.39181500000001,37.174028,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c371403->CC(-83.54 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-83.54</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>19137.58</value>
+        </Data>
+        <Data name="From">
+          <value>c371403</value>
+        </Data>
+        <Data name="To">
+          <value>CC</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.48571799999999,37.219928000000003,30
+128.27096599999999,37.205497999999999,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c739317->CC(-93.11 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-93.11</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>6255.54</value>
+        </Data>
+        <Data name="From">
+          <value>c739317</value>
+        </Data>
+        <Data name="To">
+          <value>CC</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.21928399999999,37.243976000000004,30
+128.27096599999999,37.205497999999999,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c739317->MU01(-90.94 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-90.94</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>14802.51</value>
+        </Data>
+        <Data name="From">
+          <value>c739317</value>
+        </Data>
+        <Data name="To">
+          <value>MU01</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.21928399999999,37.243976000000004,30
+128.38561999999999,37.254931999999997,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c739317->c053737(-94.21 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-94.21</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>17148.68</value>
+        </Data>
+        <Data name="From">
+          <value>c739317</value>
+        </Data>
+        <Data name="To">
+          <value>c053737</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.21928399999999,37.243976000000004,30
+128.39181500000001,37.174028,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c053737->MU01(-68.73 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-68.73</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>8993.98</value>
+        </Data>
+        <Data name="From">
+          <value>c053737</value>
+        </Data>
+        <Data name="To">
+          <value>MU01</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.39181500000001,37.174028,30
+128.38561999999999,37.254931999999997,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c053737->c371403(-88.84 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-88.84</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>9781.57</value>
+        </Data>
+        <Data name="From">
+          <value>c053737</value>
+        </Data>
+        <Data name="To">
+          <value>c371403</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.39181500000001,37.174028,30
+128.48571799999999,37.219928000000003,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c053737->CC(-71.81 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-71.81</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>11282.16</value>
+        </Data>
+        <Data name="From">
+          <value>c053737</value>
+        </Data>
+        <Data name="To">
+          <value>CC</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.39181500000001,37.174028,30
+128.27096599999999,37.205497999999999,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c053737->c739317(-94.21 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-94.21</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>17148.31</value>
+        </Data>
+        <Data name="From">
+          <value>c053737</value>
+        </Data>
+        <Data name="To">
+          <value>c739317</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.39181500000001,37.174028,30
+128.21928399999999,37.243976000000004,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c678600->CC(-83.54 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-83.54</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>18465.93</value>
+        </Data>
+        <Data name="From">
+          <value>c678600</value>
+        </Data>
+        <Data name="To">
+          <value>CC</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.38299599999999,37.065323999999997,30
+128.27096599999999,37.205497999999999,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c975536->CC(-74.95 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-74.95</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>14001.99</value>
+        </Data>
+        <Data name="From">
+          <value>c975536</value>
+        </Data>
+        <Data name="To">
+          <value>CC</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.34953300000001,37.096192000000002,30
+128.27096599999999,37.205497999999999,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c975536->MU01(-84 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-84</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>17910.62</value>
+        </Data>
+        <Data name="From">
+          <value>c975536</value>
+        </Data>
+        <Data name="To">
+          <value>MU01</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.34953300000001,37.096192000000002,30
+128.38561999999999,37.254931999999997,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[CC->c739317(-93.19 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-93.19</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>6255.67</value>
+        </Data>
+        <Data name="From">
+          <value>CC</value>
+        </Data>
+        <Data name="To">
+          <value>c739317</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.27096599999999,37.205497999999999,30
+128.21928399999999,37.243976000000004,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[CC->c053737(-71.81 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-71.81</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>11282.64</value>
+        </Data>
+        <Data name="From">
+          <value>CC</value>
+        </Data>
+        <Data name="To">
+          <value>c053737</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.27096599999999,37.205497999999999,30
+128.39181500000001,37.174028,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[CC->MU01(-81.85 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-81.85</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>11570.32</value>
+        </Data>
+        <Data name="From">
+          <value>CC</value>
+        </Data>
+        <Data name="To">
+          <value>MU01</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.27096599999999,37.205497999999999,30
+128.38561999999999,37.254931999999997,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[CC->c975536(-74.95 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-74.95</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>14002.51</value>
+        </Data>
+        <Data name="From">
+          <value>CC</value>
+        </Data>
+        <Data name="To">
+          <value>c975536</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.27096599999999,37.205497999999999,30
+128.34953300000001,37.096192000000002,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[CC->c809427(-89.51 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-89.51</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>14956.4</value>
+        </Data>
+        <Data name="From">
+          <value>CC</value>
+        </Data>
+        <Data name="To">
+          <value>c809427</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.27096599999999,37.205497999999999,30
+128.15562399999999,37.107163,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[CC->c678600(-83.54 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-83.54</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>18466.9</value>
+        </Data>
+        <Data name="From">
+          <value>CC</value>
+        </Data>
+        <Data name="To">
+          <value>c678600</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.27096599999999,37.205497999999999,30
+128.38299599999999,37.065323999999997,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[CC->c371403(-83.54 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-83.54</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>19137.86</value>
+        </Data>
+        <Data name="From">
+          <value>CC</value>
+        </Data>
+        <Data name="To">
+          <value>c371403</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.27096599999999,37.205497999999999,30
+128.48571799999999,37.219928000000003,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[MU01->c053737(-68.73 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-68.73</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>8994.13</value>
+        </Data>
+        <Data name="From">
+          <value>MU01</value>
+        </Data>
+        <Data name="To">
+          <value>c053737</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.38561999999999,37.254931999999997,30
+128.39181500000001,37.174028,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[MU01->c371403(-81.51 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-81.51</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>9696.9</value>
+        </Data>
+        <Data name="From">
+          <value>MU01</value>
+        </Data>
+        <Data name="To">
+          <value>c371403</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.38561999999999,37.254931999999997,30
+128.48571799999999,37.219928000000003,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[MU01->CC(-81.85 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-81.85</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>11570.03</value>
+        </Data>
+        <Data name="From">
+          <value>MU01</value>
+        </Data>
+        <Data name="To">
+          <value>CC</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.38561999999999,37.254931999999997,30
+128.27096599999999,37.205497999999999,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[MU01->c739317(-90.94 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-90.94</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>14802.45</value>
+        </Data>
+        <Data name="From">
+          <value>MU01</value>
+        </Data>
+        <Data name="To">
+          <value>c739317</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.38561999999999,37.254931999999997,30
+128.21928399999999,37.243976000000004,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[MU01->c975536(-84 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-84</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>17910.84</value>
+        </Data>
+        <Data name="From">
+          <value>MU01</value>
+        </Data>
+        <Data name="To">
+          <value>c975536</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.38561999999999,37.254931999999997,30
+128.34953300000001,37.096192000000002,30</coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[c809427->CC(-89.51 dBm)]]></name>
+      <styleUrl>#Links</styleUrl>
+      <ExtendedData>
+        <Data name="RSSI (dBm)">
+          <value>-89.51</value>
+        </Data>
+        <Data name="Distance (m)">
+          <value>14955.82</value>
+        </Data>
+        <Data name="From">
+          <value>c809427</value>
+        </Data>
+        <Data name="To">
+          <value>CC</value>
+        </Data>
+      </ExtendedData>
+      <LineString>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.15562399999999,37.107163,30
+128.27096599999999,37.205497999999999,30</coordinates>
+      </LineString>
+    </Placemark>
+  </Folder>
+  <Folder>
+    <name>Routing</name>
+    <Style id="Routes">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <colorMode>normal</colorMode>
+        <width>3</width>
+      </LineStyle>
+    </Style>
+    <Folder>
+      <name>Hop level = 0</name>
+      <Placemark>
+        <name><![CDATA[c371403->CC(0 hops)]]></name>
+        <styleUrl>#Routes</styleUrl>
+        <ExtendedData>
+          <Data name="Hop count">
+            <value>0</value>
+          </Data>
+          <Data name="From">
+            <value>c371403</value>
+          </Data>
+          <Data name="To (CC)">
+            <value>CC</value>
+          </Data>
+          <Data name="Hop: 1">
+            <value>CC</value>
+          </Data>
+        </ExtendedData>
+        <LineString>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.48571799999999,37.219928000000003,40
+128.27096599999999,37.205497999999999,40</coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[c739317->CC(0 hops)]]></name>
+        <styleUrl>#Routes</styleUrl>
+        <ExtendedData>
+          <Data name="Hop count">
+            <value>0</value>
+          </Data>
+          <Data name="From">
+            <value>c739317</value>
+          </Data>
+          <Data name="To (CC)">
+            <value>CC</value>
+          </Data>
+          <Data name="Hop: 1">
+            <value>CC</value>
+          </Data>
+        </ExtendedData>
+        <LineString>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.21928399999999,37.243976000000004,40
+128.27096599999999,37.205497999999999,40</coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[c053737->CC(0 hops)]]></name>
+        <styleUrl>#Routes</styleUrl>
+        <ExtendedData>
+          <Data name="Hop count">
+            <value>0</value>
+          </Data>
+          <Data name="From">
+            <value>c053737</value>
+          </Data>
+          <Data name="To (CC)">
+            <value>CC</value>
+          </Data>
+          <Data name="Hop: 1">
+            <value>CC</value>
+          </Data>
+        </ExtendedData>
+        <LineString>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.39181500000001,37.174028,40
+128.27096599999999,37.205497999999999,40</coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[c678600->CC(0 hops)]]></name>
+        <styleUrl>#Routes</styleUrl>
+        <ExtendedData>
+          <Data name="Hop count">
+            <value>0</value>
+          </Data>
+          <Data name="From">
+            <value>c678600</value>
+          </Data>
+          <Data name="To (CC)">
+            <value>CC</value>
+          </Data>
+          <Data name="Hop: 1">
+            <value>CC</value>
+          </Data>
+        </ExtendedData>
+        <LineString>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.38299599999999,37.065323999999997,40
+128.27096599999999,37.205497999999999,40</coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[c975536->CC(0 hops)]]></name>
+        <styleUrl>#Routes</styleUrl>
+        <ExtendedData>
+          <Data name="Hop count">
+            <value>0</value>
+          </Data>
+          <Data name="From">
+            <value>c975536</value>
+          </Data>
+          <Data name="To (CC)">
+            <value>CC</value>
+          </Data>
+          <Data name="Hop: 1">
+            <value>CC</value>
+          </Data>
+        </ExtendedData>
+        <LineString>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.34953300000001,37.096192000000002,40
+128.27096599999999,37.205497999999999,40</coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[MU01->CC(0 hops)]]></name>
+        <styleUrl>#Routes</styleUrl>
+        <ExtendedData>
+          <Data name="Hop count">
+            <value>0</value>
+          </Data>
+          <Data name="From">
+            <value>MU01</value>
+          </Data>
+          <Data name="To (CC)">
+            <value>CC</value>
+          </Data>
+          <Data name="Hop: 1">
+            <value>CC</value>
+          </Data>
+        </ExtendedData>
+        <LineString>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.38561999999999,37.254931999999997,40
+128.27096599999999,37.205497999999999,40</coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[c809427->CC(0 hops)]]></name>
+        <styleUrl>#Routes</styleUrl>
+        <ExtendedData>
+          <Data name="Hop count">
+            <value>0</value>
+          </Data>
+          <Data name="From">
+            <value>c809427</value>
+          </Data>
+          <Data name="To (CC)">
+            <value>CC</value>
+          </Data>
+          <Data name="Hop: 1">
+            <value>CC</value>
+          </Data>
+        </ExtendedData>
+        <LineString>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.15562399999999,37.107163,40
+128.27096599999999,37.205497999999999,40</coordinates>
+        </LineString>
+      </Placemark>
+    </Folder>
+  </Folder>
+</Folder>

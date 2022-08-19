@@ -1,0 +1,13 @@
+fromCallsign=3
+fromNodeType=4
+fromLat=2
+fromLon=1
+fromAntHeight=6
+toAntHeight=14
+toCallsign=12
+toNodeType=13
+toLat=11
+toLon=10
+Pr_dBm=18
+distance_m=23
+cost=-1

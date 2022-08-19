@@ -1,0 +1,6 @@
+CALL_SIGN,ADDRESS,COORD_X,COORD_Y,TYPE_COORD,H_ANTENNA,FREQUENCY,BANDWIDTH,BANDWIDTHRX,AZIMUTH,NOMINAL_POWER,GAIN,GAINRX,LOSSES,LOSSESRX,Antenna_nameH,Antenna_nameV,THRESHOLD,THRESHOLDRX,Category,TILT,nfdname,Uplink_cx,U_cx1,U_cx2,U_cx3,U_cx4,U_cx5,U_cx6,U_cx7,U_cx8,U_cx9,U_cx10,U_cx11,U_cx12,U_cx13,U_cx14,U_cx15,U_cx16,Downlink_cx,D_cx1,D_cx2,D_cx3,D_cx4,D_cx5,D_cx6,D_cx7,D_cx8,D_cx9,D_cx10,D_cx11,D_cx12,D_cx13,D_cx14,D_cx15,D_cx16
+hctr1,A,128.574875,37.651914,,30,1429.5,5000,5000,0,1,20,20,0.5,0.5,,,-77,-77,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+hctr2,B,128.650085,37.716153,,30,1429.5,5000,5000,0,1,20,20,0.5,0.5,,,-77,-77,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+hctr3,A,128.679764,37.675137,,30,1429.5,5000,5000,0,1,20,20,0.5,0.5,,,-77,-77,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+hctr4,B,128.731506,37.665173,,30,1429.5,5000,5000,0,1,20,20,0.5,0.5,,,-77,-77,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+hctr5,C,128.70369,37.703319,,30,1429.5,5000,5000,0,1,20,20,0.5,0.5,,,-77,-77,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

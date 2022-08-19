@@ -1,0 +1,4 @@
+1) Visual studio code 켜기
+2) 터미널 부분 powershell에서 아래 명령 치기
+
+pyinstaller .\irss_main_guitest_v220609.py  -F -p c:\irss_db_gui\v220609

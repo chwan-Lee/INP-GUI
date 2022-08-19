@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Folder xmlns="http://www.opengis.net/kml/2.2">
+  <name>Mesh Analysis</name>
+  <Folder>
+    <name>Units (MU, RE, CC)</name>
+    <Style id="MUNode">
+      <IconStyle>
+        <color>ff00ff00</color>
+        <colorMode>normal</colorMode>
+        <scale>1.1000000000000001</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="MUFNode">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <colorMode>normal</colorMode>
+        <scale>1.1000000000000001</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="RENode">
+      <IconStyle>
+        <color>ffffff00</color>
+        <colorMode>normal</colorMode>
+        <scale>1.1000000000000001</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="CCNode">
+      <IconStyle>
+        <color>ff0080ff</color>
+        <colorMode>normal</colorMode>
+        <scale>1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/ranger_station.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Placemark>
+      <name>CC</name>
+      <styleUrl>#CCNode</styleUrl>
+      <ExtendedData>
+        <Data name="Node ID">
+          <value>CC</value>
+        </Data>
+        <Data name="Nbr of CCs">
+          <value>0</value>
+        </Data>
+        <Data name="Reachable CCs" />
+        <Data name="Uni connections">
+          <value>0</value>
+        </Data>
+        <Data name="Type">
+          <value>CC</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <extrude>true</extrude>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>128.450897,37.440334999999997,30</coordinates>
+      </Point>
+    </Placemark>
+    <Folder>
+      <name>Hop level = 0</name>
+    </Folder>
+    <Folder>
+      <name>Disconnected</name>
+      <Placemark>
+        <name>MU01</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>MU01</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.42804000000001,37.520051000000002,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MU02</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>MU02</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.375854,37.434417000000003,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MU03</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>MU03</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.38626099999999,37.351317999999999,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MU04</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>MU04</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.583359,37.373241999999998,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MU05</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>MU05</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.610489,37.499729000000002,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MU06</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>MU06</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.54830899999999,37.427441000000002,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MU09</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>MU09</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.29521199999999,37.435074999999998,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MU07</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>MU07</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.15889000000001,37.440835,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MU08</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>MU08</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.21156300000001,37.323673999999997,30</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MU10</name>
+        <styleUrl>#MUFNode</styleUrl>
+        <ExtendedData>
+          <Data name="Node ID">
+            <value>MU10</value>
+          </Data>
+          <Data name="Nbr of CCs">
+            <value>0</value>
+          </Data>
+          <Data name="Reachable CCs" />
+          <Data name="Uni connections">
+            <value>0</value>
+          </Data>
+          <Data name="Type">
+            <value>MU</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <extrude>true</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <coordinates>128.63923600000001,37.30912,30</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Folder>
+  <Folder>
+    <name>RF P2P Links</name>
+    <Style id="Links">
+      <LineStyle>
+        <color>7d00ff00</color>
+        <colorMode>normal</colorMode>
+      </LineStyle>
+    </Style>
+  </Folder>
+  <Folder>
+    <name>Routing</name>
+    <Style id="Routes">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <colorMode>normal</colorMode>
+        <width>3</width>
+      </LineStyle>
+    </Style>
+    <Folder>
+      <name>Hop level = 0</name>
+    </Folder>
+  </Folder>
+</Folder>

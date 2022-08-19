@@ -1,0 +1,102 @@
+    def csvOpenBtnClicked(self):
+        fname = QFileDialog.getOpenFileName(self, '파일 열기', '', 'csv(*.csv)')
+        
+        if fname[0]:
+            data = pd.read_csv(fname[0])
+
+            # rename col
+            #data.columns = ['CALL_SIGN', 'ADDRESS', 'COORD_X', 'COORD_Y', 'TYPE_COORD', 'H_ANTENNA', 'FREQUENCY', 'BANDWIDTH', 'BANDWIDTHRX', 'AZIMUTH', 'NOMINAL_POWER', 'GAIN', 'GAINRX', 'LOSSES', 'LOSSESRX', 'WiencodeH', 'WiencodeV', 'THRESHOLD', 'THRESHOLDRX']
+            data.columns = ['CALL_SIGN','ADDRESS','COORD_X','COORD_Y','TYPE_COORD','H_ANTENNA','FREQUENCY','BANDWIDTH','BANDWIDTHRX','AZIMUTH','NOMINAL_POWER','GAIN','GAINRX','LOSSES','LOSSESRX','Antenna_nameH','Antenna_nameV','THRESHOLD','THRESHOLDRX','Category','TILT','nfdname','Uplink_cx','U_cx1','U_cx2','U_cx3','U_cx4','U_cx5','U_cx6','U_cx7','U_cx8','U_cx9','U_cx10','U_cx11','U_cx12','U_cx13','U_cx14','U_cx15','U_cx16','Downlink_cx','D_cx1','D_cx2','D_cx3','D_cx4','D_cx5','D_cx6','D_cx7','D_cx8','D_cx9','D_cx10','D_cx11','D_cx12','D_cx13','D_cx14','D_cx15','D_cx16']
+            #data['Antenna_nameH'] = data['WiencodeH']
+            #data['Antenna_nameV'] = data['WiencodeV']
+            self.tableHdrLbl = list(data.columns)
+        
+            self.tableWidget.setColumnCount(len(data.columns))
+            self.tableWidget.setHorizontalHeaderLabels(self.tableHdrLbl)
+            self.tableWidget.setRowCount(len(data.index))
+
+            m = folium.Map(location=[data.iloc[0, 3], data.iloc[0, 2]], zoom_start=11, tiles='Stamen Terrain')
+            for i in range(len(data.index)):
+                callSign = ''
+                lon = ''
+                lat = ''
+                for j in range(len(data.columns)):
+                    if self.tableHdrLbl[j] == 'CALL_SIGN':
+                        callSign = str(data.iloc[i, j])
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(callSign))
+                    elif self.tableHdrLbl[j] == 'COORD_X':
+                        lon = round(data.iloc[i, j], 6)
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(str(lon)))
+                    elif self.tableHdrLbl[j] == 'COORD_Y':
+                        lat = round(data.iloc[i, j], 6)
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(str(lat)))
+                    else:
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(str(data.iloc[i, j])))
+                
+                folium.Marker([lat, lon], popup=callSign, icon=folium.Icon(icon='cloud')).add_to(m)
+
+            m.save('C:/gui/result.html')
+            self.web.load(QUrl('C:/gui/result.html'))
+        else:
+            QMessageBox.about(self, 'Info', '파일을 선택하지 않았습니다.')
+
+        colCnt = self.tableWidget.columnCount()
+        rowCnt = self.tableWidget.rowCount()
+        headers = [str(self.tableWidget.horizontalHeaderItem(i).text()) for i in range(colCnt)]
+
+        df_list = []
+        for row in range(rowCnt):
+            df_list2 = []
+            for col in range(colCnt):
+                table_item = self.tableWidget.item(row, col)
+                df_list2.append('' if table_item is None else str(table_item.text()))
+            df_list.append(df_list2)
+        df = pd.DataFrame(df_list, columns=headers)
+        
+
+        conn = pypyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=./data/HTZtables.mdb;')
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM STATIONX64')
+
+        for row in range(rowCnt):
+            query = """INSERT INTO [STATIONX64]([ID], [CALL_SIGN], [ADDRESS], [COORD_X], [COORD_Y],
+                                              [TYPE_COORD], [H_ANTENNA], [FREQUENCY], [BANDWIDTH], [BANDWIDTHRX],
+                                              [AZIMUTH], [NOMINAL_POWER], [GAIN], [GAINRX], [LOSSES],
+                                              [LOSSESRX], [Antenna_nameH], [Antenna_nameV], [THRESHOLD], [THRESHOLDRX],
+                                              [Category], [TILT], [nfdname], [Uplink_cx], [U_cx1], [U_cx2], [U_cx3], [U_cx4], 
+                                              [U_cx5], [U_cx6], [U_cx7], [U_cx8], [U_cx9], [U_cx10], [U_cx11], [U_cx12], [U_cx13], 
+                                              [U_cx14], [U_cx15], [U_cx16], [Downlink_cx], [D_cx1], [D_cx2], [D_cx3], [D_cx4], 
+                                              [D_cx5], [D_cx6], [D_cx7], [D_cx8], [D_cx9], [D_cx10], [D_cx11], [D_cx12], [D_cx13], [D_cx14], [D_cx15], [D_cx16])
+                       VALUES({0}, '{1}', '{2}', {3}, {4},
+                             '{5}', {6}, {7}, {8}, {9},
+                             {10}, {11}, {12}, {13}, {14},
+                             {15}, '{16}', '{17}', {18}, {19},
+                             {20}, {21}, '{22}', {23}, {24},
+                             {25}, {26}, {27}, {28}, {29},
+                             {30}, {31}, {32}, {33}, {34},
+                             {35}, {36}, {37}, {38}, {39},
+                             {40}, {41}, {42}, {43}, {44},
+                             {45}, {46}, {47}, {48}, {49},
+                             {50}, {51}, {52}, {53}, {54},
+                             {55}, {56})""".format(
+                           row, df.iloc[row]['CALL_SIGN'], df.iloc[row]['ADDRESS'], df.iloc[row]['COORD_X'], df.iloc[row]['COORD_Y'],
+                           df.iloc[row]['TYPE_COORD'], df.iloc[row]['H_ANTENNA'], df.iloc[row]['FREQUENCY'], df.iloc[row]['BANDWIDTH'], df.iloc[row]['BANDWIDTHRX'],
+                           df.iloc[row]['AZIMUTH'], df.iloc[row]['NOMINAL_POWER'], df.iloc[row]['GAIN'], df.iloc[row]['GAINRX'], df.iloc[row]['LOSSES'],
+                           df.iloc[row]['LOSSESRX'], df.iloc[row]['Antenna_nameH'], df.iloc[row]['Antenna_nameV'], df.iloc[row]['THRESHOLD'], df.iloc[row]['THRESHOLDRX'],
+                           df.iloc[row]['Category'], df.iloc[row]['TILT'], df.iloc[row]['nfdname'], df.iloc[row]['Uplink_cx'],
+                           df.iloc[row]['U_cx1'], df.iloc[row]['U_cx2'], df.iloc[row]['U_cx3'], df.iloc[row]['U_cx4'], df.iloc[row]['U_cx5'],
+                           df.iloc[row]['U_cx6'], df.iloc[row]['U_cx7'], df.iloc[row]['U_cx8'], df.iloc[row]['U_cx9'], df.iloc[row]['U_cx10'],
+                           df.iloc[row]['U_cx11'], df.iloc[row]['U_cx12'], df.iloc[row]['U_cx13'], df.iloc[row]['U_cx14'], df.iloc[row]['U_cx15'], df.iloc[row]['U_cx16'],
+                           df.iloc[row]['Downlink_cx'], df.iloc[row]['D_cx1'], df.iloc[row]['D_cx2'], df.iloc[row]['D_cx3'], df.iloc[row]['D_cx4'], df.iloc[row]['D_cx5'],
+                           df.iloc[row]['D_cx6'], df.iloc[row]['D_cx7'], df.iloc[row]['D_cx8'], df.iloc[row]['D_cx9'], df.iloc[row]['D_cx10'],
+                           df.iloc[row]['D_cx11'], df.iloc[row]['D_cx12'], df.iloc[row]['D_cx13'], df.iloc[row]['D_cx14'], df.iloc[row]['D_cx15'], df.iloc[row]['D_cx16'])
+
+            cursor.execute(query)
+        
+        cursor.commit()
+
+        cursor.close()
+        conn.close()
+
+        ##path = os.path.realpath('.\\data')
+        ## os.startfile(path)
