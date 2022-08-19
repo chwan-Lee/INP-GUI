@@ -1,0 +1,626 @@
+<?xml version="1.0"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Document>
+	<name>INP610705-1000-20220819173724-PRdBm</name>
+	<GroundOverlay>
+		<name>RF Analysis</name>
+		<color>6effffff</color>
+		<Icon>
+			<href>INP610705-1000-20220819173724-PRdBm.png</href>
+			<viewBoundScale>0.90</viewBoundScale>
+		</Icon>
+		<LatLonBox>
+			<north>38.681267</north>
+			<south>37.670156</south>
+			<east>128.573596</east>
+			<west>127.203966</west>
+		</LatLonBox>
+	</GroundOverlay>
+	<StyleMap id="msn_open-diamond">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_open-diamond</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_open-diamond</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_open-diamond">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle></ListStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_open-diamond">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle></ListStyle>
+	</Style>
+	<ScreenOverlay id="Legend">
+		<name>Palette</name>
+		<description>dBm</description>
+		<Icon>
+			<href>INP610705-1000-20220819173724-PRdBmLeg.png</href>
+		</Icon>
+		<description>dBm</description>
+		<overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+		<screenXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+		<rotationXY x="0" y="0" xunits="fraction" yunits="fraction"/>
+	</ScreenOverlay>
+	<Placemark>
+		<name>ST: hctr1</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 127.6383
+latitude: 37.9938
+altitude: 206
+address: 대형노드
+frequency 1429.500000 MHz
+power: 4456.254691 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>대형노드</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>127.638328</longitude>
+			<latitude>37.993802</latitude>
+			<altitude>206.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>4456.254691</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>127.638328,37.993802,206.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr10</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 128.0229
+latitude: 38.0812
+altitude: 222
+address: 중형부대
+frequency 1429.500000 MHz
+power: 4456.254691 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>중형부대</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>128.022949</longitude>
+			<latitude>38.081185</latitude>
+			<altitude>222.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>4456.254691</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>128.022949,38.081185,222.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr11</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 127.7745
+latitude: 38.2986
+altitude: 516
+address: 중형부대
+frequency 1429.500000 MHz
+power: 4456.254691 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>중형부대</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>127.774498</longitude>
+			<latitude>38.298565</latitude>
+			<altitude>516.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>4456.254691</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>127.774498,38.298565,516.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr12</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 128.1074
+latitude: 38.3024
+altitude: 589
+address: 중형부대
+frequency 1429.500000 MHz
+power: 4456.254691 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>중형부대</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>128.107437</longitude>
+			<latitude>38.302392</latitude>
+			<altitude>589.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>4456.254691</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>128.107437,38.302392,589.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr2</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 128.0927
+latitude: 37.9921
+altitude: 182
+address: 대형노드
+frequency 1429.500000 MHz
+power: 4456.254691 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>대형노드</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>128.092742</longitude>
+			<latitude>37.992093</latitude>
+			<altitude>182.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>4456.254691</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>128.092742,37.992093,182.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr3</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 127.6084
+latitude: 38.3349
+altitude: 383
+address: 소형노드
+frequency 1429.500000 MHz
+power: 4456.254691 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>소형노드</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>127.608360</longitude>
+			<latitude>38.334855</latitude>
+			<altitude>383.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>4456.254691</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>127.608360,38.334855,383.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr4</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 127.6071
+latitude: 38.1821
+altitude: 419
+address: 소형노드
+frequency 1429.500000 MHz
+power: 4456.254691 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>소형노드</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>127.607086</longitude>
+			<latitude>38.182076</latitude>
+			<altitude>419.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>4456.254691</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>127.607086,38.182076,419.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr5</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 127.8382
+latitude: 38.2743
+altitude: 690
+address: 소형노드
+frequency 1429.500000 MHz
+power: 4456.254691 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>소형노드</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>127.838234</longitude>
+			<latitude>38.274350</latitude>
+			<altitude>690.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>4456.254691</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>127.838234,38.274350,690.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr6</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 128.2372
+latitude: 38.2427
+altitude: 483
+address: 소형노드
+frequency 1429.500000 MHz
+power: 4456.254691 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>소형노드</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>128.237198</longitude>
+			<latitude>38.242722</latitude>
+			<altitude>483.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>4456.254691</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>128.237198,38.242722,483.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr7</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 128.1644
+latitude: 38.3746
+altitude: 779
+address: 소형노드
+frequency 1429.500000 MHz
+power: 4456.254691 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>소형노드</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>128.164383</longitude>
+			<latitude>38.374627</latitude>
+			<altitude>779.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>4456.254691</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>128.164383,38.374627,779.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr8</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 127.8603
+latitude: 38.0508
+altitude: 636
+address: 대형부대
+frequency 1429.500000 MHz
+power: 4456.254691 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>대형부대</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>127.860298</longitude>
+			<latitude>38.050770</latitude>
+			<altitude>636.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>4456.254691</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>127.860298,38.050770,636.000000</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>ST: hctr9</name>
+		<Style id="NormalSheet1Map0">
+			<IconStyle>
+				<color>ff00ffff</color>
+				<heading>0.000000</heading>
+				<Icon>
+			<href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<description>longitude: 127.7242
+latitude: 38.1158
+altitude: 278
+address: 중형부대
+frequency 1429.500000 MHz
+power: 4456.254691 W
+azimuth: 0.0 °
+tilt: 0.0 °
+antenna: 30.00 m
+pattern: nan
+info: 
+networkID: 
+model: INP
+group: 
+rx height: 30.00 m</description>
+		<address>중형부대</address>
+		<info1></info1>
+		<info2></info2>
+		<model>INP</model>
+		<LookAt>
+			<longitude>127.724220</longitude>
+			<latitude>38.115830</latitude>
+			<altitude>278.000000</altitude>
+			<frequency>1429.500000</frequency>
+			<radiated_power>4456.254691</radiated_power>
+			<tilt>0.000000</tilt>
+			<azimuth>0.000000</azimuth>
+			<antenna_height>30.000000</antenna_height>
+			<horizontal_pattern>0000   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0</horizontal_pattern>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#NormalSheet1Map0</styleUrl>
+		<Point>
+			<coordinates>127.724220,38.115830,278.000000</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>

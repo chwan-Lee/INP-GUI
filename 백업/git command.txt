@@ -1,0 +1,9 @@
+C:\Users\INP>cd C:\gui
+
+C:\gui>git init
+
+C:\gui>git add .
+
+C:\gui>git commit -m "이력 로그"
+
+C:\gui>git push origin main

@@ -27,6 +27,7 @@ from config import vworld_key
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+#mm = folium.Map(location=[38, 127], zoom_start=11)
 
 class App(QWidget):
 
@@ -44,7 +45,8 @@ class App(QWidget):
         tileType = "jpeg"
         self.map_tile = f"http://api.vworld.kr/req/wmts/1.0.0/{vworld_key}/{layer}/{{z}}/{{y}}/{{x}}.{tileType}"
         self.attr = "Vworld"
-
+        self.name = "위성사진"
+        
 
     def setupUI(self):
         self.setWindowTitle(self.TITLE)
@@ -246,7 +248,7 @@ class App(QWidget):
     def delNodeBtnClicked(self):
         rowNum=self.tableWidget.rowCount()
         self.tableWidget.removeRow(rowNum-1)
-        #노드 선택해서 삭제 추가
+        #노드 선택해서 삭제
         
     def dbsaveBtnClicked(self):
         
@@ -302,7 +304,10 @@ class App(QWidget):
         conn.close()
         
         #지도에 노드 생성
-        m = folium.Map(location=[df.iloc[0, 3], df.iloc[0, 2]], zoom_start=11, tiles=self.map_tile, attr=self.attr)
+        #m = folium.Map(location=[df.iloc[0, 3], df.iloc[0, 2]], zoom_start=11, tiles=self.map_tile, attr=self.attr)
+        m = folium.Map(location=[df.iloc[0, 3], df.iloc[0, 2]], zoom_start=11)
+        folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
+
         for i in range(len(df.index)):
             callSign = ''
             for j in range(0,4):
@@ -332,7 +337,9 @@ class App(QWidget):
         self.tableWidget.setRowCount(1)
         
         default_format = pd.read_csv('./csv/hctr_default.csv')
-        m = folium.Map(location=[38, 128], zoom_start=10, tiles=self.map_tile, attr=self.attr) #노드 좌표 사용자 입력
+        #m = folium.Map(location=[38, 128], zoom_start=10, tiles=self.map_tile, attr=self.attr) #노드 좌표 사용자 입력
+        m = folium.Map(location=[38, 128], zoom_start=11)
+        folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
         m.save('C:/gui/result2.html')
         self.web.load(QUrl('C:/gui/result2.html'))
         
@@ -369,7 +376,9 @@ class App(QWidget):
             self.tableWidget.setRowCount(len(data.index))
             self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
 
-            m = folium.Map(location=[data.iloc[0, 3], data.iloc[0, 2]], zoom_start=11, tiles=self.map_tile, attr=self.attr)
+            #m = folium.Map(location=[data.iloc[0, 3], data.iloc[0, 2]], zoom_start=11, tiles=self.map_tile, attr=self.attr)
+            m = folium.Map(location=[data.iloc[0, 3], data.iloc[0, 2]], zoom_start=11)
+            folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
             for i in range(len(data.index)):
                 callSign = ''
                 lon = ''
@@ -472,7 +481,8 @@ class App(QWidget):
             sys.exit()
             
     def nodeOnMap(self):
-        m = folium.Map(location=[37.72, 128.69], zoom_start=11, tiles=self.map_tile, attr=self.attr)
+        m = folium.Map(location=[37.72, 128.69], zoom_start=11)
+        folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
         for i in range(self.tableWidget.rowCount()):
             callSign = ''
             for j in range(0,4):
@@ -484,6 +494,9 @@ class App(QWidget):
                     lat = self.tableWidget.item(i,j).text()
     
             folium.Marker([lat, lon], popup=callSign, icon=folium.Icon(icon='cloud')).add_to(m)
+        m.save('C:/gui/result.html')
+        self.web.load(QUrl('C:/gui/result.html'))
+        
         return (m)
 
     def covResultBtnClicked(self):  
@@ -504,6 +517,14 @@ class App(QWidget):
         #center_x=round((corner_left+corner_right)/2,5)
         
         nodemap=self.nodeOnMap()
+        # link_result=self.linkDraw()
+        # link_map=folium.FeatureGroup(name='연결 링크',overlay=True)
+
+        # link_map.add_child(link_result)
+  
+        cov_map=folium.FeatureGroup(name='커버리지',overlay=True,)
+        nodemap.add_child(cov_map)
+        # nodemap.add_child(link_map)
         
         folium.raster_layers.ImageOverlay(
             image=cov_file[0],
@@ -513,12 +534,13 @@ class App(QWidget):
             interactive=False,
             cross_origin=False,
             zindex=1,
-        ).add_to(nodemap)
+        ).add_to(cov_map)
 
-        folium.LayerControl().add_to(nodemap)
+        folium.LayerControl(autoZIndex=True).add_to(nodemap)
 
         nodemap.save('C:/gui/result.html')
         self.web.load(QUrl('C:/gui/result.html'))
+        return nodemap
         
     #link analysis
     def linkResultBtnClicked(self):
@@ -592,14 +614,19 @@ class App(QWidget):
         link_list0 = list(set(link_list0)) #제거 리스트
 
         return link_tr2
-    
-    
-    
-    
+
     def linkDraw(self):
+        
         link_result=self.linkCSVopen()
         print(link_result)
-        link_map=self.nodeOnMap()
+        
+        nodemap=self.nodeOnMap()
+        cov_result=self.covResultBtnClicked()
+        link_map=folium.FeatureGroup(name='연결 링크',overlay=True)
+        cov_map=folium.FeatureGroup(name='커버리지',overlay=True)
+        cov_result.add_to(cov_map)
+        nodemap.add_child(cov_map)
+        nodemap.add_child(link_map)
         
         #변조방식 추천 기능 
         user_mod, ok = QInputDialog.getText(self, "변조방식", "QAM 신호레벨(dBm)")
@@ -622,7 +649,9 @@ class App(QWidget):
             elif link_result['Pr dBm'].iloc[i]<mod:
                 folium.vector_layers.PolyLine([node_A,node_B], tooltip="PSK", popup="PSK", color='red').add_to(link_map) #PSK : 툴팁 PSK + color red
 
-        folium.LayerControl().add_to(link_map)
+        folium.LayerControl(autoZIndex=True).add_to(nodemap)
 
-        link_map.save('C:/gui/result.html')
+        nodemap.save('C:/gui/result.html')
         self.web.load(QUrl('C:/gui/result.html'))
+        
+        return nodemap
