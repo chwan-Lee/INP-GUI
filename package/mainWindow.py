@@ -194,7 +194,7 @@ class App(QWidget):
         # 시나리오 생성 버튼
         clickbtn0=QPushButton("시나리오 파일 생성")
         clickbtn0.setFixedHeight(self.SIZE)
-        clickbtn0.clicked.connect(self.newScenBtnClicked)
+        clickbtn0.clicked.connect(self.newLCTRScenBtnClicked)
         
         # csv 임포팅 버튼
         clickbtn1=QPushButton("시나리오 파일 열기")
@@ -350,6 +350,41 @@ class App(QWidget):
         # 부대명, 그룹, 경도, 위도 정보 삭제
         self.tableWidget.takeItem(0,0)
         self.tableWidget.takeItem(0,1)
+        self.tableWidget.takeItem(0,2)
+        self.tableWidget.takeItem(0,3)
+        # 불필요 파라미터 표시 제거(signal, nfd)
+        self.tableWidget.hideColumn(19)
+        self.tableWidget.hideColumn(21)
+        #주파수 2~16 및 개수 표시 제거
+        for i in range(22,39):
+            self.tableWidget.hideColumn(i)
+            
+            
+    def newLCTRScenBtnClicked(self):
+        
+        # rename col
+        data.columns = ['부대명','그룹','경도','위도','좌표계','안테나 높이 (m)','주파수 (MHz)','송신대역폭 (kHz)','수신대역폭 (kHz)','방위각 (deg)','출력 (W)','송신 안테나 이득 (dB)','수신 안테나 이득 (dB)','송신 손실 (dB)','수신 손실 (dB)','수평 안테나 패턴','수직 안테나 패턴','커버리지 수신감도 (dBm)','수신감도 (dBm)','signal (category)','기울기 (deg)','nfd','freqTx1','freqTx2','freqTx3','freqTx4','freqTx5','freqTx6','freqTx7','freqTx8','freqTx9','freqTx10','freqTx11','freqTx12','freqTx13','freqTx14','freqTx15','freqTx16','Downlink_cx']
+
+        self.tableHdrLbl = list(data.columns)
+    
+        self.tableWidget.setColumnCount(len(data.columns))
+        self.tableWidget.setHorizontalHeaderLabels(self.tableHdrLbl)
+        self.tableWidget.setRowCount(1)
+        
+        default_format = pd.read_csv('./csv/lctr_default.csv')
+        #m = folium.Map(location=[38, 128], zoom_start=10, tiles=self.map_tile, attr=self.attr) #노드 좌표 사용자 입력
+        m = folium.Map(location=[38, 128], zoom_start=11)
+        folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
+        m.save('C:/gui/result2.html')
+        self.web.load(QUrl('C:/gui/result2.html'))
+        
+        for i in range(len(default_format.index)):
+            for j in range(len(default_format.columns)):
+                self.tableWidget.setItem(i, j, QTableWidgetItem(str(default_format.iloc[i, j])))
+        self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        # 부대명, 그룹, 경도, 위도 정보 삭제
+        #self.tableWidget.takeItem(0,0)
+        #self.tableWidget.takeItem(0,1)
         self.tableWidget.takeItem(0,2)
         self.tableWidget.takeItem(0,3)
         # 불필요 파라미터 표시 제거(signal, nfd)
