@@ -7,3 +7,6 @@ C:\gui>git add .
 C:\gui>git commit -m "이력 로그"
 
 C:\gui>git push origin main
+
+
+https://github.com/chwan-Lee/INP-GUI
