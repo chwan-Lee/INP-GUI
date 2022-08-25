@@ -1,5 +1,6 @@
  #-*- coding: utf-8 -*- 
 
+from audioop import reverse
 from cmath import nan
 from dataclasses import asdict
 from email.policy import default
@@ -28,26 +29,6 @@ from config import vworld_key
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-#mm = folium.Map(location=[38, 127], zoom_start=11)
-node_url1='./img/대형.png'
-node_url2='./img/소형.png'
-node_url3='./img/부대.png'
-
-icon_node1 = CustomIcon(
-    node_url1,
-    icon_size=(30, 30)
-)
-
-icon_node2 = CustomIcon(
-    node_url2,
-    icon_size=(30, 30)
-)
-        
-icon_node3 = CustomIcon(
-    node_url3,
-    icon_size=(30, 30)
-)
-
 class App(QWidget):
 
     def __init__(self):
@@ -66,31 +47,10 @@ class App(QWidget):
         self.attr = "Vworld"
         self.name = "위성사진"
 
-        node_url1='./img/대형.png'
-        node_url2='./img/소형.png'
-        node_url3='./img/부대.png'
+        self.node_url1='./img/대형.png'
+        self.node_url2='./img/소형.png'
+        self.node_url3='./img/부대.png'
         
-        self.icon_node1 = CustomIcon(
-            node_url1,
-            icon_size=(30, 30)
-        )
-        
-        self.icon_node2 = CustomIcon(
-            node_url2,
-            icon_size=(30, 30)
-        )
-                
-        self.icon_node3 = CustomIcon(
-            node_url3,
-            icon_size=(30, 30)
-        )
-        
-        m = folium.Map(location=[38, 127], zoom_start=11)
-        
-        folium.Marker([38, 127], popup='test', icon=icon_node1).add_to(m) # png 파일 경로를 '아이콘'에 입력 
-        
-        m.save('C:/gui/result3.html')
-        self.web.load(QUrl('C:/gui/result3.html'))
         
 
     def setupUI(self):
@@ -124,6 +84,12 @@ class App(QWidget):
         self.linkResultBtn.setFixedHeight(self.SIZE)
         self.linkResultBtn.setFixedWidth(100)
         self.linkResultBtn.clicked.connect(self.linkResultBtnClicked)
+        
+        # "전체 결과" 버튼
+        self.ResultBtn = QPushButton("전체 결과")
+        self.ResultBtn.setFixedHeight(self.SIZE)
+        self.ResultBtn.setFixedWidth(100)
+        self.ResultBtn.clicked.connect(self.ResultBtnClicked)
         
         # "노드 추가" 버튼
         self.addNode = QPushButton("노드 추가")
@@ -164,6 +130,7 @@ class App(QWidget):
         hbox = QHBoxLayout()
         hbox.addWidget(self.covResultBtn)
         hbox.addWidget(self.linkResultBtn)
+        hbox.addWidget(self.ResultBtn)
         hbox.addStretch(1)
         hbox.addWidget(self.addNode)
         hbox.addWidget(self.delNode)
@@ -367,9 +334,15 @@ class App(QWidget):
         #m = folium.Map(location=[df.iloc[0, 3], df.iloc[0, 2]], zoom_start=11, tiles=self.map_tile, attr=self.attr)
         m = folium.Map(location=[df.iloc[0, 3], df.iloc[0, 2]], zoom_start=11)
         folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
+        
+        icon_group= folium.FeatureGroup('부대 배치').add_to(m)
 
         for i in range(len(df.index)):
             callSign = ''
+            group =''
+            icon_node1 = CustomIcon(self.node_url1,icon_size=(30, 30))
+            icon_node2 = CustomIcon(self.node_url2,icon_size=(30, 30))
+            icon_node3 = CustomIcon(self.node_url3,icon_size=(30, 30))
             for j in range(0,5):
                 if self.tableHdrLbl[j] == '부대명':
                     callSign = str(df.iloc[i, j])
@@ -379,11 +352,19 @@ class App(QWidget):
 
                 elif self.tableHdrLbl[j] == '경도': #위도 (열이 한개씩 밀림)
                     lat = df.iloc[i, j]
-                    print(lat)
+
+                elif self.tableHdrLbl[j] == '그룹': 
+                    group = df.iloc[i, j]
                 else :
                     pass
-            folium.Marker([lat, lon], popup=callSign, icon=self.icon_node1).add_to(m)        
-            #folium.Marker([lat, lon], popup=callSign, icon=folium.Icon(icon='cloud')).add_to(m) # png 파일 경로를 '아이콘'에 입력
+            if group=='대형노드' :
+                folium.Marker([lat, lon], popup=callSign, icon=icon_node1).add_to(icon_group)
+            elif group=='소형노드' :
+                folium.Marker([lat, lon], popup=callSign, icon=icon_node2).add_to(icon_group)
+            elif group=='대형부대' or group=='중형부대' :
+                folium.Marker([lat, lon], popup=callSign, icon=icon_node3).add_to(icon_group)
+        
+        folium.LayerControl(autoZIndex=True).add_to(m)
 
         m.save('C:/gui/result3.html')
         self.web.load(QUrl('C:/gui/result3.html'))
@@ -468,22 +449,17 @@ class App(QWidget):
             #m = folium.Map(location=[data.iloc[0, 3], data.iloc[0, 2]], zoom_start=11, tiles=self.map_tile, attr=self.attr)
             m = folium.Map(location=[data.iloc[0, 3], data.iloc[0, 2]], zoom_start=11)
             folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
-            
-            node_url1='./img/대형.png'
-            
-            icon_node11 = CustomIcon(
-                node_url1,
-                icon_size=(30, 30),
-                icon_anchor=(15,15),
-                #shadow_url='./img/대형.png',
-                #shadow_size=(15,15),
-                #shadow_anchor=(15,15),
-                popup_anchor=(15,15)
-            )
+
+            icon_group= folium.FeatureGroup('부대 배치').add_to(m)
+
             for i in range(len(data.index)):
                 callSign = ''
                 lon = ''
                 lat = ''
+                group =''
+                icon_node1 = CustomIcon(self.node_url1,icon_size=(30, 30))
+                icon_node2 = CustomIcon(self.node_url2,icon_size=(30, 30))
+                icon_node3 = CustomIcon(self.node_url3,icon_size=(30, 30))
                 QTableWidgetItem().setTextAlignment(Qt.AlignCenter)
                 for j in range(len(data.columns)):
                     if self.tableHdrLbl[j] == '부대명':
@@ -495,10 +471,21 @@ class App(QWidget):
                     elif self.tableHdrLbl[j] == '위도':
                         lat = round(data.iloc[i, j], 6)
                         self.tableWidget.setItem(i, j, QTableWidgetItem(str(lat)))
+                    elif self.tableHdrLbl[j] == '그룹':
+                        group = str(data.iloc[i, j])
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(group))
                     else:
                         self.tableWidget.setItem(i, j, QTableWidgetItem(str(data.iloc[i, j])))
-                folium.Marker([lat, lon], popup=callSign, icon=icon_node11).add_to(m)
+                if group=='대형노드' :
+                    folium.Marker([lat, lon], popup=callSign, icon=icon_node1).add_to(icon_group)
+                elif group=='소형노드' :
+                    folium.Marker([lat, lon], popup=callSign, icon=icon_node2).add_to(icon_group)
+                elif group=='대형부대' or group=='중형부대' :
+                    folium.Marker([lat, lon], popup=callSign, icon=icon_node3).add_to(icon_group)
 
+            
+            folium.LayerControl(autoZIndex=True).add_to(m)
+            
             m.save('C:/gui/result.html')
             self.web.load(QUrl('C:/gui/result.html'))
             
@@ -589,10 +576,15 @@ class App(QWidget):
             sys.exit()
             
     def nodeOnMap(self):
-        m = folium.Map(location=[37.72, 128.69], zoom_start=11)
+        m = folium.Map(location=[self.tableWidget.item(0,4).text(), self.tableWidget.item(0,3).text()], zoom_start=11)
         folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
+        icon_group= folium.FeatureGroup('분석 결과').add_to(m)
         for i in range(self.tableWidget.rowCount()):
             callSign = ''
+            group =''
+            icon_node1 = CustomIcon(self.node_url1,icon_size=(30, 30))
+            icon_node2 = CustomIcon(self.node_url2,icon_size=(30, 30))
+            icon_node3 = CustomIcon(self.node_url3,icon_size=(30, 30))           
             for j in range(0,5):
                 if self.tableHdrLbl[j] == '부대명':
                     callSign = self.tableWidget.item(i,j).text()
@@ -600,12 +592,21 @@ class App(QWidget):
                     lon = self.tableWidget.item(i,j).text()
                 elif self.tableHdrLbl[j] == '위도':
                     lat = self.tableWidget.item(i,j).text()
-    
-            folium.Marker([lat, lon], popup=callSign, icon=folium.Icon(icon='cloud')).add_to(m)
-        m.save('C:/gui/result.html')
-        self.web.load(QUrl('C:/gui/result.html'))
+                elif self.tableHdrLbl[j] == '그룹':
+                    group = self.tableWidget.item(i,j).text()
+            if group=='대형노드' :
+                folium.Marker([lat, lon], popup=callSign, icon=icon_node1).add_to(icon_group)
+            elif group=='소형노드' :
+                folium.Marker([lat, lon], popup=callSign, icon=icon_node2).add_to(icon_group)
+            elif group=='대형부대' or group=='중형부대' :
+                folium.Marker([lat, lon], popup=callSign, icon=icon_node3).add_to(icon_group)            
         
-        return (m)
+        folium.LayerControl(autoZIndex=True).add_to(m)
+        
+        m.save('C:/gui/result_node.html')
+        self.web.load(QUrl('C:/gui/result_node.html'))
+        
+        return (icon_group)
 
     def covResultBtnClicked(self):  
         #커버리지 파일 찾기
@@ -630,13 +631,13 @@ class App(QWidget):
 
         # link_map.add_child(link_result)
   
-        cov_map=folium.FeatureGroup(name='커버리지',overlay=True,)
-        nodemap.add_child(cov_map)
+        cov_map=folium.FeatureGroup('커버리지').add_to(nodemap)
+
         # nodemap.add_child(link_map)
         
         folium.raster_layers.ImageOverlay(
             image=cov_file[0],
-            name="coverage",
+            name="커버리지",
             bounds=[[corner_low, corner_left], [corner_top, corner_right]],
             opacity=1,
             interactive=False,
@@ -644,11 +645,11 @@ class App(QWidget):
             zindex=1,
         ).add_to(cov_map)
 
-        folium.LayerControl(autoZIndex=True).add_to(nodemap)
+        folium.LayerControl(autoZIndex=True).add_to(cov_map)
 
-        nodemap.save('C:/gui/result.html')
-        self.web.load(QUrl('C:/gui/result.html'))
-        return nodemap
+        cov_map.save('C:/gui/result_cov.html')
+        self.web.load(QUrl('C:/gui/result_cov.html'))
+        return (cov_map)
         
     #link analysis
     def linkResultBtnClicked(self):
@@ -656,6 +657,7 @@ class App(QWidget):
 
         
     def linkCSVopen(self):
+        #링크 파일 선택
         link_file=glob.glob('./outcome/P2P/*.CSV')
         lr = pd.read_csv(link_file[0],';',encoding='cp949')
 
@@ -683,7 +685,7 @@ class App(QWidget):
         for i in link_list:
             link_tr2=link_tr2.drop(i, axis=0) #노드 연결 규칙 적용
         
-        # ###부대 통신소 가장 가까운 노드에 1개만 연결
+        # ###부대 통신소 가장 가까운 노드에 1개만 연결 기능
         # link_tr2.reset_index(drop=True,inplace=True)# 인덱스 초기화
         # link_list2=[]
         # for i in range(0,len(link_tr2.index)):
@@ -699,25 +701,45 @@ class App(QWidget):
 
         link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
         
+        #중형 부대부터 sort(차량수 적은 그룹 순으로 )
+
+        link_tr2.sort_values(['Address.1','Callsign.1'], ascending=False,inplace=True)
+        print(link_tr2)
+        
         #####노드통신소 링크 연결 개수 제한
-        link_tr2.reset_index(drop=True,inplace=True)# 인덱스 초기화
+        link_tr2.reset_index(drop=True,inplace=True) # 인덱스 초기화
         link_list0=[]
-        for i in range(0,len(link_tr2.index)):
-            node_cnt=0
-            if link_tr2['Address'].iloc[i]=='대형노드' :
-                for j in range(0,len(link_tr2.index)):
-                    if link_tr2['Callsign'].iloc[i]==link_tr2['Callsign'].iloc[j]:
-                        node_cnt=node_cnt+1
-                        if node_cnt>8:
-                            link_list0.append(j)
-            elif link_tr2['Address'].iloc[i]=='소형노드' :
-                for j in range(0,len(link_tr2.index)):
-                    if link_tr2['Callsign'].iloc[i]==link_tr2['Callsign'].iloc[j]:
-                        node_cnt=node_cnt+1
-                        if node_cnt>4:
-                            link_list0.append(j)
+        node_cnt=0
+        callsign=''
+        for i in range(len(link_tr2.index)):
+            for j in range(self.tableWidget.rowCount()):
+                if link_tr2['Callsign.1'].iloc[i]==self.tableWidget.item(j,0).text(): # 0 : 부대명 컬럼
+                    callsign=link_tr2['Callsign.1'].iloc[i]
+                    print(link_tr2['Callsign.1'].iloc[i])
+                    print(self.tableWidget.item(j,0).text())
+                    node_cnt=node_cnt+1
+                    car_cnt=int(self.tableWidget.item(j,2).text())
+                    
+                    print(node_cnt,car_cnt)
+                    
+                    if node_cnt>car_cnt:
+                        link_list0.append(i)
+                        print('remove : ',i)
+                        
+                    if i<len(link_tr2.index)-1 and callsign!=link_tr2['Callsign.1'].iloc[i+1]:
+                        node_cnt=0
+                        print('~~~~~~~~~~~~~~~~~~~cnt 0')
+
+
+
         
         link_list0 = list(set(link_list0)) #제거 리스트
+        print(link_list0)
+        
+        for i in link_list0:
+            link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
+
+        link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
 
         return link_tr2
 
@@ -727,12 +749,7 @@ class App(QWidget):
         print(link_result)
         
         nodemap=self.nodeOnMap()
-        cov_result=self.covResultBtnClicked()
-        link_map=folium.FeatureGroup(name='연결 링크',overlay=True)
-        cov_map=folium.FeatureGroup(name='커버리지',overlay=True)
-        cov_result.add_to(cov_map)
-        nodemap.add_child(cov_map)
-        nodemap.add_child(link_map)
+        link_map=folium.FeatureGroup(name='연결 링크',overlay=True).add_to(nodemap)
         
         #변조방식 추천 기능 - 1
         # user_mod, ok = QInputDialog.getText(self, "변조방식", "QAM 신호레벨(dBm)")
@@ -759,7 +776,17 @@ class App(QWidget):
 
         folium.LayerControl(autoZIndex=True).add_to(nodemap)
 
-        nodemap.save('C:/gui/result.html')
-        self.web.load(QUrl('C:/gui/result.html'))
+        nodemap.save('C:/gui/result_link.html')
+        self.web.load(QUrl('C:/gui/result_link.html'))
         
-        return nodemap
+        return link_map
+
+    def ResultBtnClicked(self):
+        
+        nodemap=self.nodeOnMap()
+        self.linkDraw().add_to(nodemap)
+        self.covResultBtnClicked().add_to(nodemap)
+        folium.LayerControl(autoZIndex=True).add_to(nodemap)
+
+        nodemap.save('C:/gui/result_sum.html')
+        self.web.load(QUrl('C:/gui/result_sum.html'))
