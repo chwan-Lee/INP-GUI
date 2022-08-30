@@ -52,7 +52,7 @@ class App(QWidget):
         self.node_url2='./img/소형.png'
         self.node_url3='./img/부대.png'
         
-        
+        QDrag
 
     def setupUI(self):
         self.setWindowTitle(self.TITLE)
@@ -333,7 +333,7 @@ class App(QWidget):
         
         #지도에 노드 생성
         #m = folium.Map(location=[df.iloc[0, 3], df.iloc[0, 2]], zoom_start=11, tiles=self.map_tile, attr=self.attr)
-        m = folium.Map(location=[df.iloc[0, 3], df.iloc[0, 2]], zoom_start=11)
+        m = folium.Map(location=[df.iloc[0, 3], df.iloc[0, 2]], zoom_start=10)
         folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
         
         icon_group= folium.FeatureGroup('부대 배치').add_to(m)
@@ -359,11 +359,11 @@ class App(QWidget):
                 else :
                     pass
             if group=='대형노드' :
-                folium.Marker([lat, lon], popup=callSign, icon=icon_node1).add_to(icon_group)
+                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node1).add_to(icon_group)
             elif group=='소형노드' :
-                folium.Marker([lat, lon], popup=callSign, icon=icon_node2).add_to(icon_group)
+                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node2).add_to(icon_group)
             elif group=='대형부대' or group=='중형부대' :
-                folium.Marker([lat, lon], popup=callSign, icon=icon_node3).add_to(icon_group)
+                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node3).add_to(icon_group)
         
         folium.LayerControl(autoZIndex=True).add_to(m)
 
@@ -383,7 +383,7 @@ class App(QWidget):
         
         default_format = pd.read_csv('./csv/hctr_default.csv')
         #m = folium.Map(location=[38, 128], zoom_start=10, tiles=self.map_tile, attr=self.attr) #노드 좌표 사용자 입력
-        m = folium.Map(location=[38, 128], zoom_start=11)
+        m = folium.Map(location=[38, 128], zoom_start=10)
         folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
         m.save('C:/gui/result2.html')
         self.web.load(QUrl('C:/gui/result2.html'))
@@ -418,7 +418,7 @@ class App(QWidget):
         
         default_format = pd.read_csv('./csv/lctr_default.csv')
         #m = folium.Map(location=[38, 128], zoom_start=10, tiles=self.map_tile, attr=self.attr) #노드 좌표 사용자 입력
-        m = folium.Map(location=[38, 128], zoom_start=11)
+        m = folium.Map(location=[38, 128], zoom_start=10)
         folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
         m.save('C:/gui/result2.html')
         self.web.load(QUrl('C:/gui/result2.html'))
@@ -448,7 +448,7 @@ class App(QWidget):
             self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
 
             #m = folium.Map(location=[data.iloc[0, 3], data.iloc[0, 2]], zoom_start=11, tiles=self.map_tile, attr=self.attr)
-            m = folium.Map(location=[data.iloc[0, 3], data.iloc[0, 2]], zoom_start=11)
+            m = folium.Map(location=[data.iloc[0, 3], data.iloc[0, 2]], zoom_start=10)
             folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
 
             icon_group= folium.FeatureGroup('부대 배치').add_to(m)
@@ -478,11 +478,11 @@ class App(QWidget):
                     else:
                         self.tableWidget.setItem(i, j, QTableWidgetItem(str(data.iloc[i, j])))
                 if group=='대형노드' :
-                    folium.Marker([lat, lon], popup=callSign, icon=icon_node1).add_to(icon_group)
+                    folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node1).add_to(icon_group)
                 elif group=='소형노드' :
-                    folium.Marker([lat, lon], popup=callSign, icon=icon_node2).add_to(icon_group)
+                    folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node2).add_to(icon_group)
                 elif group=='대형부대' or group=='중형부대' :
-                    folium.Marker([lat, lon], popup=callSign, icon=icon_node3).add_to(icon_group)
+                    folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node3).add_to(icon_group)
 
             
             folium.LayerControl(autoZIndex=True).add_to(m)
@@ -575,9 +575,9 @@ class App(QWidget):
         reply = QMessageBox.question(self, "종료", "프로그램을 종료하시겠습니까?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             sys.exit()
-            
+    
     def nodeOnMap(self):
-        m = folium.Map(location=[self.tableWidget.item(0,4).text(), self.tableWidget.item(0,3).text()], zoom_start=11)
+        m = folium.Map(location=[self.tableWidget.item(0,4).text(), self.tableWidget.item(0,3).text()], zoom_start=10)
         folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
         icon_group= folium.FeatureGroup('분석 결과').add_to(m)
         for i in range(self.tableWidget.rowCount()):
@@ -596,11 +596,11 @@ class App(QWidget):
                 elif self.tableHdrLbl[j] == '그룹':
                     group = self.tableWidget.item(i,j).text()
             if group=='대형노드' :
-                folium.Marker([lat, lon], popup=callSign, icon=icon_node1).add_to(icon_group)
+                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node1).add_to(icon_group)
             elif group=='소형노드' :
-                folium.Marker([lat, lon], popup=callSign, icon=icon_node2).add_to(icon_group)
+                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node2).add_to(icon_group)
             elif group=='대형부대' or group=='중형부대' :
-                folium.Marker([lat, lon], popup=callSign, icon=icon_node3).add_to(icon_group)            
+                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node3).add_to(icon_group)            
         
         folium.LayerControl(autoZIndex=True).add_to(m)
         
@@ -665,26 +665,27 @@ class App(QWidget):
         #중복 행 제거 - 멀티 채널
         link_tr=lr.drop_duplicates(['Callsign','Callsign.1'])
 
-        #수신 감도 -77dBm이상 
+        #수신 감도 -77dBm이상 [테스트 -200]
         link_tr2=link_tr.loc[lr['Pr dBm']>-200]
 
         # 인덱스 초기화
         link_tr2.reset_index(drop=True,inplace=True)
 
-        ####링크 형성 알고리즘###
-        # ###단방향만 고려하여 중복 제거
-        # link_list=[]
-        # for i in range(0,len(link_tr2.index)):
-        #     if link_tr2['Address'].iloc[i]=='소형노드':
-        #         if link_tr2['Address.1'].iloc[i]=='대형부대':
-        #             link_list.append(i) # 제거 행 리스트 
-        #     elif link_tr2['Address'].iloc[i]=='대형노드':
-        #         pass
-        #     else :
-        #         link_list.append(i) # 제거 행 리스트
-        # for i in link_list:
-        #     link_tr2=link_tr2.drop(i, axis=0) #노드 연결 규칙 적용
+        ###링크 형성 알고리즘###
+        ###단방향만 고려하여 중복 제거
+        link_list=[]
+        for i in range(0,len(link_tr2.index)):
+            if link_tr2['Address'].iloc[i]=='소형노드':
+                if link_tr2['Address.1'].iloc[i]=='대형부대':
+                    link_list.append(i) # 제거 행 리스트 
+            elif link_tr2['Address'].iloc[i]=='대형노드':
+                pass
+            else :
+                link_list.append(i) # 제거 행 리스트
+        for i in link_list:
+            link_tr2=link_tr2.drop(i, axis=0) #노드 연결 규칙 적용
         
+        link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거        
         
         # ###부대 통신소 가장 가까운 노드에 1개만 연결 기능
         # link_tr2.reset_index(drop=True,inplace=True)# 인덱스 초기화
@@ -700,85 +701,55 @@ class App(QWidget):
         # for i in link_list2:
         #     link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
 
-        link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
+        #link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
         
         #중형 부대부터 sort(차량수 적은 그룹 순으로 )
-
         link_tr2.sort_values(['Address.1','Callsign.1'], ascending=False,inplace=True)
         print(link_tr2)
         
-        #####노드통신소 링크 연결 개수 제한 - 단방향에 대한 노드 연결 개수 제한(차량수)
+        #####[노드통신소 최대 링크 연결 개수 제한]
         link_tr2.reset_index(drop=True,inplace=True) # 인덱스 초기화
         link_list0=[]
         link_col=[]
-        link_row=['0']
+        link_row=['0','1','2'] # 0 : full link, 1: 최대 링크 수, 2 : 연결된 링크 수
+        
         for i in range(self.tableWidget.rowCount()):
             link_col.append(self.tableWidget.item(i,0).text())
-        print(link_col)
+
         link_table = pd.DataFrame(index=link_row,columns=link_col)
         link_table.reset_index()
         link_table=link_table.fillna(0)
-        print(link_table)
-        node_cnt=0
-        callsign=''
+        
+        for i in range(self.tableWidget.rowCount()):
+            link_table.iloc[1,i]=2*int(self.tableWidget.item(i,2).text())
         tx=''
-        rx=''
-        print('~~~~~~~~~~~~~~',link_table['hctr1'].iloc[0])
+        rx=''   ####노드통신소 최대 링크 연결 개수 제한 - 초기화 완료
+        
+        ###최대 링크 연결 제한 - 차량수
         for i in range(len(link_tr2.index)):
             for j in range(self.tableWidget.rowCount()):
                 if link_tr2['Callsign.1'].iloc[i]==self.tableWidget.item(j,0).text(): # 0 : 부대명 컬럼
-                    callsign=link_tr2['Callsign.1'].iloc[i]
                     tx=link_tr2['Callsign'].iloc[i]
                     rx=link_tr2['Callsign.1'].iloc[i]
-                    print(link_tr2['Callsign.1'].iloc[i],link_tr2['Address.1'].iloc[i])
-                    print(link_tr2['Callsign'].iloc[i],link_tr2['Address'].iloc[i])
-                    node_cnt=node_cnt+1
-                    car_cnt=2*int(self.tableWidget.item(j,2).text())
                     link_table[tx].iloc[0]=link_table[tx].iloc[0]+1
                     link_table[rx].iloc[0]=link_table[rx].iloc[0]+1
-                    print(node_cnt,car_cnt)
                     
-                    if node_cnt>car_cnt:
+                    if (link_table[tx].iloc[2]>=link_table[tx].iloc[1] or link_table[rx].iloc[2]>=link_table[rx].iloc[1]):
                         link_list0.append(i)
-                        print('remove : ',i)
                         
-                    if i<len(link_tr2.index)-1 and callsign!=link_tr2['Callsign.1'].iloc[i+1]:
-                        node_cnt=0
-                        print('~~~~~~~~~~~~~~~~~~~cnt 0')
-                        
-                    if link_table[tx].iloc[0]>car_cnt:
-                        link_list0.append(i)
-                        print(link_table, 'i : ', i)
-                    # elif link_table[rx].iloc[0]>car_cnt:
-                    #     link_list0.append(j)
-                    #     print(link_table, 'j : ', j)
-                    print(link_list0)
+                    elif link_table[tx].iloc[2]<link_table[tx].iloc[1] and link_table[rx].iloc[2]<link_table[rx].iloc[1]:
+                        print('[',i,']link connect', tx,link_table[tx].iloc[2],'~~~',rx, link_table[rx].iloc[2])
+                        link_table[tx].iloc[2]=link_table[tx].iloc[2]+1
+                        link_table[rx].iloc[2]=link_table[rx].iloc[2]+1
 
         link_list0 = list(set(link_list0)) #제거 리스트
+        print(link_table)
         print(link_list0)
         
         for i in link_list0:
-            link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
+           link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
 
-        link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
-        
-        # ###########양방향 링크 리스트
-        # link_tr2.reset_index(drop=True,inplace=True) # 인덱스 초기화
-        # link_list1=[]
-        # for i in range(len(link_tr2.index)):
-        #     for j in range(len(link_tr2.index)):
-        #         if link_tr2['Callsign'].iloc[i]==link_tr2['Callsign.1'].iloc[j] and link_tr2['Callsign.1'].iloc[i]==link_tr2['Callsign'].iloc[j]: # 송신 수신이 서로 각각 같은지
-        #             print(link_tr2['Callsign.1'].iloc[i],link_tr2['Callsign'].iloc[i])
-        #             link_list1.append(i)
-        #             print(link_list1)
-
-        # link_list1 = list(set(link_list1)) #제거 리스트
-        # print(link_list1)
-        
-        # for i in link_list1:
-        #     link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
-
-        # link_tr2.reset_index(drop=True,inplace=True)             
+        link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거     
 
         return link_tr2
 
