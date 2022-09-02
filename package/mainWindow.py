@@ -52,7 +52,9 @@ class App(QWidget):
         self.node_url2='./img/소형.png'
         self.node_url3='./img/부대.png'
         
-        QDrag
+    def dragevent(self):
+        print()
+        
 
     def setupUI(self):
         self.setWindowTitle(self.TITLE)
@@ -250,14 +252,16 @@ class App(QWidget):
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
             print("row: {0}, col: {1}, contents: {2}".format(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text()))
             currentQTableWidgetItem.setForeground(QBrush(QColor(255, 0, 0)))       
-            
+      
+      
     def addNodeBtnClicked(self):
         self.tableWidget.insertRow(self.tableWidget.rowCount())
-        for i in range(1,self.tableWidget.rowCount()):
-            for j in range(5,self.tableWidget.columnCount()):
+        for j in range(2,self.tableWidget.columnCount()) :
+            if j ==5 or j == 6 :
+                pass
+            else :
                 item=QTableWidgetItem(self.tableWidget.item(0,j))
-                item.setTextAlignment(Qt.AlignCenter)
-                self.tableWidget.setItem(i, j, item)
+                self.tableWidget.setItem(self.tableWidget.rowCount()-1, j, item)
                 
     def delNodeBtnClicked(self):
         rowNum=self.tableWidget.rowCount()
@@ -265,14 +269,37 @@ class App(QWidget):
         #노드 선택해서 삭제
         
     def nodeSet(self): # 불필요 컬럼 제거 및 '차량수' 컬럼 추가
-        #차량수 컬럼 추가
-        nodelinkcnt=2   
-        self.tableWidget.insertColumn(nodelinkcnt)
-        self.tableHdrLbl.insert(nodelinkcnt,'차량수')
+        col_order=2
+        Hctrlinkcnt=2 
+        LctrSLRcnt=0    
+        LctrMLRcnt=1
+        self.tableWidget.insertColumn(col_order)
+        self.tableHdrLbl.insert(col_order,'LCTR SLR')
         self.tableWidget.setHorizontalHeaderLabels(self.tableHdrLbl)
+        self.tableWidget.insertColumn(col_order)
+        self.tableHdrLbl.insert(col_order,'LCTR MLR')
+        self.tableWidget.setHorizontalHeaderLabels(self.tableHdrLbl)
+        self.tableWidget.insertColumn(col_order)
+        self.tableHdrLbl.insert(col_order,'HCTR 차량수')
+        self.tableWidget.setHorizontalHeaderLabels(self.tableHdrLbl)
+        #차량수 컬럼 추가
+        #slr
         for i in range(self.tableWidget.rowCount()):
-            self.tableWidget.setItem(i,nodelinkcnt,QTableWidgetItem(str('2'))) # hctr 차량 개수 : 2 default 
+            self.tableWidget.setItem(i,col_order+2,QTableWidgetItem(str(LctrSLRcnt))) # slr : 0 default 
         self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        #mlr
+        for i in range(self.tableWidget.rowCount()):
+            self.tableWidget.setItem(i,col_order+1,QTableWidgetItem(str(LctrMLRcnt))) # mlr : 1 default 
+        self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        #hctr
+        for i in range(self.tableWidget.rowCount()):
+            self.tableWidget.setItem(i,col_order,QTableWidgetItem(str(Hctrlinkcnt))) # hctr 차량 개수 : 2 default 
+        self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        for i in range(self.tableWidget.rowCount()):
+            for j in range(self.tableWidget.columnCount()):
+                QTableWidgetItem(self.tableWidget.item(i,j)).setTextAlignment(Qt.AlignCenter)   
+
+
         
         
     def dbsaveBtnClicked(self):
@@ -348,10 +375,10 @@ class App(QWidget):
                 if self.tableHdrLbl[j] == '부대명':
                     callSign = str(df.iloc[i, j])
 
-                elif self.tableHdrLbl[j] == '차량수': #경도 (열이 한개씩 밀림)
+                elif self.tableHdrLbl[j] == '경도': #경도 (열이 한개씩 밀림)
                     lon = df.iloc[i, j]
 
-                elif self.tableHdrLbl[j] == '경도': #위도 (열이 한개씩 밀림)
+                elif self.tableHdrLbl[j] == '위도': #위도 (열이 한개씩 밀림)
                     lat = df.iloc[i, j]
 
                 elif self.tableHdrLbl[j] == '그룹': 
@@ -364,6 +391,8 @@ class App(QWidget):
                 folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node2).add_to(icon_group)
             elif group=='대형부대' or group=='중형부대' :
                 folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node3).add_to(icon_group)
+            else :
+                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=folium.Icon(icon='cloud')).add_to(icon_group)
         
         folium.LayerControl(autoZIndex=True).add_to(m)
 
@@ -389,7 +418,7 @@ class App(QWidget):
         self.web.load(QUrl('C:/gui/result2.html'))
         
         for i in range(len(default_format.index)):
-            for j in range(4,len(default_format.columns)):
+            for j in range(2,len(default_format.columns)):
                 QTableWidgetItem().setTextAlignment(1)
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(default_format.iloc[i, j])))
 
@@ -483,6 +512,9 @@ class App(QWidget):
                     folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node2).add_to(icon_group)
                 elif group=='대형부대' or group=='중형부대' :
                     folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node3).add_to(icon_group)
+                else :
+                    print(lat, lon)
+                    folium.Marker([lat, lon], popup=callSign, draggable=True, icon=folium.Icon(icon='cloud')).add_to(icon_group)
 
             
             folium.LayerControl(autoZIndex=True).add_to(m)
@@ -497,25 +529,29 @@ class App(QWidget):
             self.tableWidget.hideColumn(9)
             for i in range(11,39):
                 self.tableWidget.hideColumn(i)
-            
-            self.nodeSet()  #차량수 컬럼
 
             #self.HTZDBconnect
             colCnt = self.tableWidget.columnCount()
             rowCnt = self.tableWidget.rowCount()
-            headers = [str(self.tableWidget.horizontalHeaderItem(i).text()) for i in range(colCnt) if i != 2]
+            headers = [str(self.tableWidget.horizontalHeaderItem(i).text()) for i in range(colCnt) ]
+           #headers = [str(self.tableWidget.horizontalHeaderItem(i).text()) for i in range(colCnt) if i != 2]
             
             df_list = []
             for row in range(rowCnt):
                 df_list2 = []
                 for col in range(colCnt):
-                    if col == 2:
-                        pass
-                    else :
-                        table_item = self.tableWidget.item(row, col)
-                        df_list2.append('' if table_item is None else str(table_item.text()))
+                    table_item = self.tableWidget.item(row, col)
+                    df_list2.append('' if table_item is None else str(table_item.text()))
+                    #기존
+                    # if col == 2 :
+                    #    pass
+                    # else :
+                    #    table_item = self.tableWidget.item(row, col)
+                    #    df_list2.append('' if table_item is None else str(table_item.text()))
                 df_list.append(df_list2)
             df = pd.DataFrame(df_list, columns=headers)
+            
+            
             
             conn = pypyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=./data/HTZtables.mdb;')
             cursor = conn.cursor()
@@ -531,29 +567,33 @@ class App(QWidget):
                         VALUES({0}, '{1}', '{2}', {3}, {4},
                                 '{5}', {6}, {7}, {8}, {9},
                                 {10}, {11}, {12}, {13}, {14},
-                                {15}, '{16}', '{17}', {18} + 140, {19} + 140,
+                                {15}, '{16}', '{17}', {18} + 140, {19} + 140, 
                                 {20}, {21}, '{22}', {23}, {24},
                                 {25}, {26}, {27}, {28}, {29},
                                 {30}, {31}, {32}, {33}, {34},
                                 {35}, {36}, {37}, {38}, {39})""".format(
-                             row, df.iloc[row]['부대명'], df.iloc[row]['그룹'], df.iloc[row]['경도'], df.iloc[row]['위도'],
-                           df.iloc[row]['좌표계'], df.iloc[row]['안테나 높이 (m)'], df.iloc[row]['주파수 (MHz)'], df.iloc[row]['송신대역폭 (kHz)'], df.iloc[row]['수신대역폭 (kHz)'],
-                           df.iloc[row]['방위각 (deg)'], df.iloc[row]['출력 (W)'], df.iloc[row]['송신 안테나 이득 (dB)'], df.iloc[row]['수신 안테나 이득 (dB)'], df.iloc[row]['송신 손실 (dB)'],
-                           df.iloc[row]['수신 손실 (dB)'], df.iloc[row]['수평 안테나 패턴'], df.iloc[row]['수직 안테나 패턴'], df.iloc[row]['커버리지 수신감도 (dBm)'], df.iloc[row]['수신감도 (dBm)'],
-                           df.iloc[row]['signal (category)'], df.iloc[row]['기울기 (deg)'], df.iloc[row]['nfd'],
-                           df.iloc[row]['freqTx1'], df.iloc[row]['freqTx2'], df.iloc[row]['freqTx3'], df.iloc[row]['freqTx4'], df.iloc[row]['freqTx5'],
-                           df.iloc[row]['freqTx6'], df.iloc[row]['freqTx7'], df.iloc[row]['freqTx8'], df.iloc[row]['freqTx9'], df.iloc[row]['freqTx10'],
-                           df.iloc[row]['freqTx11'], df.iloc[row]['freqTx12'], df.iloc[row]['freqTx13'], df.iloc[row]['freqTx14'], df.iloc[row]['freqTx15'],
-                           df.iloc[row]['freqTx16'], df.iloc[row]['Downlink_cx'])
+                                row, df.iloc[row]['부대명'], df.iloc[row]['그룹'], df.iloc[row]['경도'], df.iloc[row]['위도'],
+                            df.iloc[row]['좌표계'], df.iloc[row]['안테나 높이 (m)'], df.iloc[row]['주파수 (MHz)'], df.iloc[row]['송신대역폭 (kHz)'], df.iloc[row]['수신대역폭 (kHz)'],
+                            df.iloc[row]['방위각 (deg)'], df.iloc[row]['출력 (W)'], df.iloc[row]['송신 안테나 이득 (dB)'], df.iloc[row]['수신 안테나 이득 (dB)'], df.iloc[row]['송신 손실 (dB)'],
+                            df.iloc[row]['수신 손실 (dB)'], df.iloc[row]['수평 안테나 패턴'], df.iloc[row]['수직 안테나 패턴'], df.iloc[row]['커버리지 수신감도 (dBm)'], df.iloc[row]['수신감도 (dBm)'],
+                            df.iloc[row]['signal (category)'], df.iloc[row]['기울기 (deg)'], df.iloc[row]['nfd'],
+                            df.iloc[row]['freqTx1'], df.iloc[row]['freqTx2'], df.iloc[row]['freqTx3'], df.iloc[row]['freqTx4'], df.iloc[row]['freqTx5'],
+                            df.iloc[row]['freqTx6'], df.iloc[row]['freqTx7'], df.iloc[row]['freqTx8'], df.iloc[row]['freqTx9'], df.iloc[row]['freqTx10'],
+                            df.iloc[row]['freqTx11'], df.iloc[row]['freqTx12'], df.iloc[row]['freqTx13'], df.iloc[row]['freqTx14'], df.iloc[row]['freqTx15'],
+                            df.iloc[row]['freqTx16'], df.iloc[row]['Downlink_cx'])
+                            #{18} + 140, {19} + 140 : dBm + 140 = dBu
 
                 cursor.execute(query)
-            
+
             cursor.commit()
 
             cursor.close()
             conn.close()
+            
+            self.nodeSet()  #차량수 컬럼
         else:
             QMessageBox.about(self, 'Info', '파일을 선택하지 않았습니다.')
+
 
     def covBtnClicked(self):
         print('covBtnClicked()')
@@ -577,7 +617,7 @@ class App(QWidget):
             sys.exit()
     
     def nodeOnMap(self):
-        m = folium.Map(location=[self.tableWidget.item(0,4).text(), self.tableWidget.item(0,3).text()], zoom_start=10)
+        m = folium.Map(location=[self.tableWidget.item(0,6).text(), self.tableWidget.item(0,5).text()], zoom_start=10)
         folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
         icon_group= folium.FeatureGroup('분석 결과').add_to(m)
         for i in range(self.tableWidget.rowCount()):
@@ -586,7 +626,7 @@ class App(QWidget):
             icon_node1 = CustomIcon(self.node_url1,icon_size=(30, 30))
             icon_node2 = CustomIcon(self.node_url2,icon_size=(30, 30))
             icon_node3 = CustomIcon(self.node_url3,icon_size=(30, 30))           
-            for j in range(0,5):
+            for j in range(0,7):
                 if self.tableHdrLbl[j] == '부대명':
                     callSign = self.tableWidget.item(i,j).text()
                 elif self.tableHdrLbl[j] == '경도':
@@ -600,7 +640,9 @@ class App(QWidget):
             elif group=='소형노드' :
                 folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node2).add_to(icon_group)
             elif group=='대형부대' or group=='중형부대' :
-                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node3).add_to(icon_group)            
+                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node3).add_to(icon_group)    
+            else :
+                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=folium.Icon(icon='cloud')).add_to(icon_group)       
         
         folium.LayerControl(autoZIndex=True).add_to(m)
         
@@ -666,7 +708,7 @@ class App(QWidget):
         link_tr=lr.drop_duplicates(['Callsign','Callsign.1'])
 
         #수신 감도 -77dBm이상 [테스트 -200]
-        link_tr2=link_tr.loc[lr['Pr dBm']>-200]
+        link_tr2=link_tr.loc[lr['Pr dBm']>-77]
 
         # 인덱스 초기화
         link_tr2.reset_index(drop=True,inplace=True)
@@ -685,26 +727,26 @@ class App(QWidget):
         for i in link_list:
             link_tr2=link_tr2.drop(i, axis=0) #노드 연결 규칙 적용
         
-        link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거        
+        # link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거        
         
-        # ###부대 통신소 가장 가까운 노드에 1개만 연결 기능
-        # link_tr2.reset_index(drop=True,inplace=True)# 인덱스 초기화
-        # link_list2=[]
-        # for i in range(0,len(link_tr2.index)):
-        #     if link_tr2['Address'].iloc[i]=='소형노드' and link_tr2['Address.1'].iloc[i]=='중형부대':
-        #         for j in range(0,len(link_tr2.index)):
-        #             if link_tr2['Callsign.1'].iloc[i]==link_tr2['Callsign.1'].iloc[j] and link_tr2['Distance m'].iloc[i]>link_tr2['Distance m'].iloc[j]:
-        #                 link_list2.append(i)
-        #             elif link_tr2['Callsign.1'].iloc[i]==link_tr2['Callsign.1'].iloc[j] and link_tr2['Distance m'].iloc[i]<link_tr2['Distance m'].iloc[j]:
-        #                 link_list2.append(j)
-        # link_list2 = list(set(link_list2)) #제거 행 리스트 중복 제거
-        # for i in link_list2:
-        #     link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
+        ###부대 통신소 가장 가까운 노드에 1개만 연결 기능
+        link_tr2.reset_index(drop=True,inplace=True)# 인덱스 초기화
+        link_list2=[]
+        for i in range(0,len(link_tr2.index)):
+            if link_tr2['Address'].iloc[i]=='소형노드' and link_tr2['Address.1'].iloc[i]=='중형부대':
+                for j in range(0,len(link_tr2.index)):
+                    if link_tr2['Callsign.1'].iloc[i]==link_tr2['Callsign.1'].iloc[j] and link_tr2['Distance m'].iloc[i]>link_tr2['Distance m'].iloc[j]:
+                        link_list2.append(i)
+                    elif link_tr2['Callsign.1'].iloc[i]==link_tr2['Callsign.1'].iloc[j] and link_tr2['Distance m'].iloc[i]<link_tr2['Distance m'].iloc[j]:
+                        link_list2.append(j)
+        link_list2 = list(set(link_list2)) #제거 행 리스트 중복 제거
+        for i in link_list2:
+            link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
 
-        #link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
+        link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
         
-        #중형 부대부터 sort(차량수 적은 그룹 순으로 )
-        link_tr2.sort_values(['Address.1','Callsign.1'], ascending=False,inplace=True)
+        # sort(True 면 대형노드 부터, False면 중형부대 부터 )
+        link_tr2.sort_values(['Address.1','Callsign.1'], ascending=False,inplace=True) 
         print(link_tr2)
         
         #####[노드통신소 최대 링크 연결 개수 제한]
@@ -721,9 +763,9 @@ class App(QWidget):
         link_table=link_table.fillna(0)
         
         for i in range(self.tableWidget.rowCount()):
-            link_table.iloc[1,i]=2*int(self.tableWidget.item(i,2).text())
+            link_table.iloc[1,i]=2*int(self.tableWidget.item(i,2).text()) #hctr 차량수
         tx=''
-        rx=''   ####노드통신소 최대 링크 연결 개수 제한 - 초기화 완료
+        rx=''   ####노드통신소 최대 링크 연결 개수 제한 - 초기화 
         
         ###최대 링크 연결 제한 - 차량수
         for i in range(len(link_tr2.index)):
@@ -738,13 +780,13 @@ class App(QWidget):
                         link_list0.append(i)
                         
                     elif link_table[tx].iloc[2]<link_table[tx].iloc[1] and link_table[rx].iloc[2]<link_table[rx].iloc[1]:
-                        print('[',i,']link connect', tx,link_table[tx].iloc[2],'~~~',rx, link_table[rx].iloc[2])
+                        #print('[',i,']link connect', tx,link_table[tx].iloc[2],'~~~',rx, link_table[rx].iloc[2])
                         link_table[tx].iloc[2]=link_table[tx].iloc[2]+1
                         link_table[rx].iloc[2]=link_table[rx].iloc[2]+1
 
         link_list0 = list(set(link_list0)) #제거 리스트
-        print(link_table)
-        print(link_list0)
+        #print(link_table)
+        #print(link_list0)
         
         for i in link_list0:
            link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
