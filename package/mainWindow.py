@@ -714,14 +714,42 @@ class App(QWidget):
         link_tr2.reset_index(drop=True,inplace=True)
 
         ###링크 형성 알고리즘###
+        
+        #####[노드통신소 최대 링크 연결 개수 제한]
+        link_tr2.reset_index(drop=True,inplace=True) # 인덱스 초기화
+        link_list0=[]
+        link_col=[]
+        link_row=[] 
+        
+        for i in range(self.tableWidget.rowCount()):
+            link_col.append(self.tableWidget.item(i,0).text())
+        
+        for i in range(self.tableWidget.rowCount()):
+            link_row.append(self.tableWidget.item(i,0).text())
+
+        link_table = pd.DataFrame(index=link_row,columns=link_col)
+        link_table.reset_index()
+        link_table=link_table.fillna(0)
+        
+        for i in range(self.tableWidget.rowCount()):
+            link_table.iloc[1,i]=2*int(self.tableWidget.item(i,2).text()) #hctr 차량수
+          ####노드통신소 최대 링크 연결 개수 제한 - 초기화
+        
         ###단방향만 고려하여 중복 제거
         link_list=[]
         for i in range(0,len(link_tr2.index)):
             if link_tr2['Address'].iloc[i]=='소형노드':
-                if link_tr2['Address.1'].iloc[i]=='대형부대':
-                    link_list.append(i) # 제거 행 리스트 
+                if link_tr2['Address.1'].iloc[i]=='대형부대' or link_tr2['Address.1'].iloc[i]=='대형노드':
+                    link_list.append(i) # 제거 행 리스트
+                
             elif link_tr2['Address'].iloc[i]=='대형노드':
-                pass
+                if link_tr2['Address.1'].iloc[i]=='대형노드':
+                    for j in range(len(link_tr2.index)-i):
+                        if(link_tr2['Callsign'].iloc[i]==link_tr2['Callsign.1'].iloc[j] and link_tr2['Callsign.1'].iloc[i]==link_tr2['Callsign'].iloc[j]) and j>i:
+                            #link_table[link_tr2['Callsign'].iloc[i]][link_tr2['Callsign.1'].iloc[j]]
+                            link_list.append(j)
+                            print(j,link_tr2['Address'].iloc[j], link_tr2['Address.1'].iloc[j], link_tr2['Callsign'].iloc[j], link_tr2['Callsign.1'].iloc[j])
+                            pass
             else :
                 link_list.append(i) # 제거 행 리스트
         for i in link_list:
@@ -729,7 +757,7 @@ class App(QWidget):
         
         # link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거        
         
-        ###부대 통신소 가장 가까운 노드에 1개만 연결 기능
+        ###부대 통신소 가장 가까운 노드에 1개만 연결
         link_tr2.reset_index(drop=True,inplace=True)# 인덱스 초기화
         link_list2=[]
         for i in range(0,len(link_tr2.index)):
@@ -744,6 +772,23 @@ class App(QWidget):
             link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
 
         link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
+        
+        ###소형 노드 통신소 가장 가까운 대형 노드에 1개만 연결
+        link_tr2.reset_index(drop=True,inplace=True)# 인덱스 초기화
+        link_list2=[]
+        for i in range(0,len(link_tr2.index)):
+            if link_tr2['Address'].iloc[i]=='대형노드' and link_tr2['Address.1'].iloc[i]=='소형노드':
+                for j in range(0,len(link_tr2.index)):
+                    if link_tr2['Callsign.1'].iloc[i]==link_tr2['Callsign.1'].iloc[j] and link_tr2['Distance m'].iloc[i]>link_tr2['Distance m'].iloc[j]:
+                        link_list2.append(i)
+                    elif link_tr2['Callsign.1'].iloc[i]==link_tr2['Callsign.1'].iloc[j] and link_tr2['Distance m'].iloc[i]<link_tr2['Distance m'].iloc[j]:
+                        link_list2.append(j)
+        link_list2 = list(set(link_list2)) #제거 행 리스트 중복 제거
+        for i in link_list2:
+            link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
+
+        link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
+        
         
         # sort(True 면 대형노드 부터, False면 중형부대 부터 )
         link_tr2.sort_values(['Address.1','Callsign.1'], ascending=False,inplace=True) 
@@ -780,13 +825,14 @@ class App(QWidget):
                         link_list0.append(i)
                         
                     elif link_table[tx].iloc[2]<link_table[tx].iloc[1] and link_table[rx].iloc[2]<link_table[rx].iloc[1]:
-                        #print('[',i,']link connect', tx,link_table[tx].iloc[2],'~~~',rx, link_table[rx].iloc[2])
+                        print('[',i,']link connect', tx,link_table[tx].iloc[2],'~~~',rx, link_table[rx].iloc[2])
                         link_table[tx].iloc[2]=link_table[tx].iloc[2]+1
                         link_table[rx].iloc[2]=link_table[rx].iloc[2]+1
+                        
 
         link_list0 = list(set(link_list0)) #제거 리스트
-        #print(link_table)
-        #print(link_list0)
+        print(link_table)
+        print(link_list0)
         
         for i in link_list0:
            link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
@@ -830,6 +876,8 @@ class App(QWidget):
 
         nodemap.save('C:/gui/result_link.html')
         self.web.load(QUrl('C:/gui/result_link.html'))
+        link_result.to_csv('C:\\gui\\outcome\\result.csv') #링크 저장
+
         
         return link_map
 
