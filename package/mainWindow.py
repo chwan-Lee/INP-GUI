@@ -51,11 +51,8 @@ class App(QWidget):
         self.node_url1='./img/대형.png'
         self.node_url2='./img/소형.png'
         self.node_url3='./img/부대.png'
+        self.node_url4='./img/소형부대.png'
         
-    def dragevent(self):
-        print()
-        
-
     def setupUI(self):
         self.setWindowTitle(self.TITLE)
         self.setWindowIcon(QIcon('./img/favicon.png'))
@@ -83,10 +80,16 @@ class App(QWidget):
         self.covResultBtn.clicked.connect(self.covResultBtnClicked)
         
         # "링크 출력" 버튼
-        self.linkResultBtn = QPushButton("테스트(링크)")
-        self.linkResultBtn.setFixedHeight(self.SIZE)
-        self.linkResultBtn.setFixedWidth(100)
-        self.linkResultBtn.clicked.connect(self.linkResultBtnClicked)
+        self.HlinkResultBtn = QPushButton("HCTR 링크")
+        self.HlinkResultBtn.setFixedHeight(self.SIZE)
+        self.HlinkResultBtn.setFixedWidth(100)
+        self.HlinkResultBtn.clicked.connect(self.HlinkResultBtnClicked)
+        
+        # "링크 출력" 버튼
+        self.LlinkResultBtn = QPushButton("LCTR 링크")
+        self.LlinkResultBtn.setFixedHeight(self.SIZE)
+        self.LlinkResultBtn.setFixedWidth(100)
+        self.LlinkResultBtn.clicked.connect(self.LlinkResultBtnClicked)
         
         # "전체 결과" 버튼
         self.ResultBtn = QPushButton("전체 결과")
@@ -132,7 +135,8 @@ class App(QWidget):
         # 우측 하단, 노드 추가, 노드 삭제, 저장 버튼 레이아웃 설정
         hbox = QHBoxLayout()
         hbox.addWidget(self.covResultBtn)
-        hbox.addWidget(self.linkResultBtn)
+        hbox.addWidget(self.HlinkResultBtn)
+        hbox.addWidget(self.LlinkResultBtn)
         hbox.addWidget(self.ResultBtn)
         hbox.addStretch(1)
         hbox.addWidget(self.addNode)
@@ -179,7 +183,7 @@ class App(QWidget):
         # "링크 분석 시작" 버튼
         clickbtn3 = QPushButton("링크 연결성 분석")
         clickbtn3.setFixedHeight(self.SIZE)
-        clickbtn3.clicked.connect(self.linkBtnClicked)
+        clickbtn3.clicked.connect(self.HlinkBtnClicked)
                 
         # "중계소배치 시작" 버튼
         clickbtn4 = QPushButton("중계소 배치")
@@ -224,7 +228,7 @@ class App(QWidget):
         # "링크 분석 시작" 버튼
         clickbtn3 = QPushButton("링크 연결성 분석")
         clickbtn3.setFixedHeight(self.SIZE)
-        clickbtn3.clicked.connect(self.linkBtnClicked)
+        clickbtn3.clicked.connect(self.LlinkBtnClicked)
                 
         # "중계소배치 시작" 버튼
         clickbtn4 = QPushButton("중계소 배치")
@@ -371,14 +375,15 @@ class App(QWidget):
             icon_node1 = CustomIcon(self.node_url1,icon_size=(30, 30))
             icon_node2 = CustomIcon(self.node_url2,icon_size=(30, 30))
             icon_node3 = CustomIcon(self.node_url3,icon_size=(30, 30))
+            icon_node4 = CustomIcon(self.node_url4,icon_size=(30, 30))
             for j in range(0,5):
                 if self.tableHdrLbl[j] == '부대명':
                     callSign = str(df.iloc[i, j])
 
-                elif self.tableHdrLbl[j] == '경도': #경도 (열이 한개씩 밀림)
+                elif self.tableHdrLbl[j] == '경도':
                     lon = df.iloc[i, j]
 
-                elif self.tableHdrLbl[j] == '위도': #위도 (열이 한개씩 밀림)
+                elif self.tableHdrLbl[j] == '위도': 
                     lat = df.iloc[i, j]
 
                 elif self.tableHdrLbl[j] == '그룹': 
@@ -391,6 +396,8 @@ class App(QWidget):
                 folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node2).add_to(icon_group)
             elif group=='대형부대' or group=='중형부대' :
                 folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node3).add_to(icon_group)
+            elif group=='소형부대' :
+                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node4).add_to(icon_group)
             else :
                 folium.Marker([lat, lon], popup=callSign, draggable=True, icon=folium.Icon(icon='cloud')).add_to(icon_group)
         
@@ -490,6 +497,7 @@ class App(QWidget):
                 icon_node1 = CustomIcon(self.node_url1,icon_size=(30, 30))
                 icon_node2 = CustomIcon(self.node_url2,icon_size=(30, 30))
                 icon_node3 = CustomIcon(self.node_url3,icon_size=(30, 30))
+                icon_node4 = CustomIcon(self.node_url4,icon_size=(30, 30))
                 QTableWidgetItem().setTextAlignment(Qt.AlignCenter)
                 for j in range(len(data.columns)):
                     if self.tableHdrLbl[j] == '부대명':
@@ -512,8 +520,9 @@ class App(QWidget):
                     folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node2).add_to(icon_group)
                 elif group=='대형부대' or group=='중형부대' :
                     folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node3).add_to(icon_group)
+                elif group=='소형부대' :
+                    folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node4).add_to(icon_group)
                 else :
-                    print(lat, lon)
                     folium.Marker([lat, lon], popup=callSign, draggable=True, icon=folium.Icon(icon='cloud')).add_to(icon_group)
 
             
@@ -599,9 +608,13 @@ class App(QWidget):
         print('covBtnClicked()')
         os.system(".\\batch\\Coverage.bat")
 
-    def linkBtnClicked(self):
+    def HlinkBtnClicked(self):
         print('linkBtnClicked')
-        os.system(".\\batch\\P2P.bat")
+        os.system(".\\batch\\P2P_hctr.bat")
+    
+    def LlinkBtnClicked(self):
+        print('linkBtnClicked')
+        os.system(".\\batch\\P2P_lctr.bat")
 
     def nodeBtnClicked(self):
         print('nodeBtnClicked')
@@ -625,7 +638,8 @@ class App(QWidget):
             group =''
             icon_node1 = CustomIcon(self.node_url1,icon_size=(30, 30))
             icon_node2 = CustomIcon(self.node_url2,icon_size=(30, 30))
-            icon_node3 = CustomIcon(self.node_url3,icon_size=(30, 30))           
+            icon_node3 = CustomIcon(self.node_url3,icon_size=(30, 30))
+            icon_node4 = CustomIcon(self.node_url4,icon_size=(30, 30))
             for j in range(0,7):
                 if self.tableHdrLbl[j] == '부대명':
                     callSign = self.tableWidget.item(i,j).text()
@@ -640,7 +654,9 @@ class App(QWidget):
             elif group=='소형노드' :
                 folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node2).add_to(icon_group)
             elif group=='대형부대' or group=='중형부대' :
-                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node3).add_to(icon_group)    
+                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node3).add_to(icon_group)
+            elif group=='소형부대' :
+                folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node4).add_to(icon_group)       
             else :
                 folium.Marker([lat, lon], popup=callSign, draggable=True, icon=folium.Icon(icon='cloud')).add_to(icon_group)       
         
@@ -694,14 +710,17 @@ class App(QWidget):
         self.web.load(QUrl('C:/gui/result_cov.html'))
         return (cov_map)
         
-    #link analysis
-    def linkResultBtnClicked(self):
-        self.linkDraw()
+    ###########################################link analysis#####################
+    def HlinkResultBtnClicked(self):
+        self.HlinkDraw()
+    
+    def LlinkResultBtnClicked(self):
+        self.LlinkDraw()
 
         
-    def linkCSVopen(self):
+    def HlinkCSVopen(self): # HCTR 링크 규칙
         #링크 파일 선택
-        link_file=glob.glob('./outcome/P2P/*.CSV')
+        link_file=glob.glob('./outcome/P2P/hctr/*.CSV')
         lr = pd.read_csv(link_file[0],';',encoding='cp949')
 
         #중복 행 제거 - 멀티 채널
@@ -718,21 +737,7 @@ class App(QWidget):
         #####[노드통신소 최대 링크 연결 개수 제한]
         link_tr2.reset_index(drop=True,inplace=True) # 인덱스 초기화
         link_list0=[]
-        link_col=[]
-        link_row=[] 
-        
-        for i in range(self.tableWidget.rowCount()):
-            link_col.append(self.tableWidget.item(i,0).text())
-        
-        for i in range(self.tableWidget.rowCount()):
-            link_row.append(self.tableWidget.item(i,0).text())
-
-        link_table = pd.DataFrame(index=link_row,columns=link_col)
-        link_table.reset_index()
-        link_table=link_table.fillna(0)
-        
-        for i in range(self.tableWidget.rowCount()):
-            link_table.iloc[1,i]=2*int(self.tableWidget.item(i,2).text()) #hctr 차량수
+    
           ####노드통신소 최대 링크 연결 개수 제한 - 초기화
         
         ###단방향만 고려하여 중복 제거
@@ -789,7 +794,6 @@ class App(QWidget):
 
         link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
         
-        
         # sort(True 면 대형노드 부터, False면 중형부대 부터 )
         link_tr2.sort_values(['Address.1','Callsign.1'], ascending=False,inplace=True) 
         print(link_tr2)
@@ -841,10 +845,138 @@ class App(QWidget):
 
         return link_tr2
 
-    def linkDraw(self):
+    def LlinkCSVopen(self): #LCTR링크 규칙
+        #링크 파일 선택
+        link_file=glob.glob('./outcome/P2P/lctr/*.CSV')
+        lr = pd.read_csv(link_file[0],';',encoding='cp949')
+
+        #중복 행 제거 - 멀티 채널
+        link_tr=lr.drop_duplicates(['Callsign','Callsign.1'])
+
+        #수신 감도 -77dBm이상 [테스트 -200]
+        link_tr2=link_tr.loc[lr['Pr dBm']>-200]
+
+        # 인덱스 초기화
+        link_tr2.reset_index(drop=True,inplace=True)
+
+        # ###링크 형성 알고리즘###
         
-        link_result=self.linkCSVopen()
-        print(link_result)
+        # #####[노드통신소 최대 링크 연결 개수 제한]
+        link_tr2.reset_index(drop=True,inplace=True) # 인덱스 초기화
+        
+        ####노드통신소 최대 링크 연결 개수 제한 - 초기화
+        
+        ###단방향만 고려하여 중복 제거
+        link_list=[]
+        for i in range(0,len(link_tr2.index)):
+            if link_tr2['Address'].iloc[i]!='소형부대':
+                link_list.append(i) # 제거 행 리스트
+            elif link_tr2['Address'].iloc[i]=='소형부대' and link_tr2['Address.1'].iloc[i]=='소형부대':
+                link_list.append(i) # 제거 행 리스트
+        for i in link_list:
+            link_tr2=link_tr2.drop(i, axis=0) #노드 연결 규칙 적용
+
+        link_tr2.reset_index(drop=True,inplace=True)# 인덱스 초기화
+        link_tr2_bk=link_tr2
+        # # ### LCTR : 소형부대 통신소 가장 가까운 노드에 1개만 연결
+        link_list2=[]
+        for i in range(0,len(link_tr2.index)):
+            # if link_tr2['Address'].iloc[i]=='소형' and link_tr2['Address.1'].iloc[i]=='중형부대':
+            for j in range(0,len(link_tr2.index)):
+                if link_tr2['Callsign'].iloc[i]==link_tr2['Callsign'].iloc[j] and link_tr2['Distance m'].iloc[i]>link_tr2['Distance m'].iloc[j]:
+                    link_list2.append(i)
+                elif link_tr2['Callsign'].iloc[i]==link_tr2['Callsign'].iloc[j] and link_tr2['Distance m'].iloc[i]<link_tr2['Distance m'].iloc[j]:
+                    link_list2.append(j)
+        link_list2 = list(set(link_list2)) #제거 행 리스트 중복 제거
+        for i in link_list2:
+            link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
+        link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
+        
+        #####[노드통신소 최대 링크 연결 개수 제한]
+        link_tr2.reset_index(drop=True,inplace=True) # 인덱스 초기화
+        link_list0=[]
+        link_col=[]
+        link_row=['0','1','2','3','4'] # 0 : MLR 전체 링크 수, 1: 1섹터(0~89) 링크 수 , 2 : 2섹터(90~179) 링크 수, 3 : 3섹터(180~269) 링크 수, 4 : 4섹터(270~359) 링크 수
+        
+        for i in range(len(link_tr2.index)):
+            if link_tr2['Address.1'].iloc[i] != '소형부대' : 
+                link_col.append(link_tr2['Callsign.1'].iloc[i])
+        link_col = list(set(link_col))
+        link_col.sort()
+
+        link_table = pd.DataFrame(index=link_row,columns=link_col)
+        link_table.reset_index()
+        link_table=link_table.fillna(0)
+    
+        tx=''   ####노드통신소 최대 링크 연결 개수 제한 - 초기화 
+        
+        ###최대 링크 연결 제한 - 섹터별
+        for i in range(len(link_tr2.index)):
+            tx=link_tr2['Callsign.1'].iloc[i]
+            if link_tr2['Callsign.1'].iloc[i] != '소형부대' and link_table[tx].iloc[0]<8: #MLR당 8개 제한
+                az=link_tr2['Azimuth Rx->Tx (deg)'].iloc[i]
+                if az>=0 and az<90 and link_table[tx].iloc[1]<4:    #섹터별 4개 제한
+                    link_table[tx].iloc[0]=link_table[tx].iloc[0]+1
+                    link_table[tx].iloc[1]=link_table[tx].iloc[1]+1
+                    
+                elif az>=90 and az<180 and link_table[tx].iloc[2]<4:
+                    link_table[tx].iloc[0]=link_table[tx].iloc[0]+1
+                    link_table[tx].iloc[2]=link_table[tx].iloc[2]+1
+                    
+                elif az>=180 and az<270 and link_table[tx].iloc[3]<4:
+                    link_table[tx].iloc[0]=link_table[tx].iloc[0]+1
+                    link_table[tx].iloc[3]=link_table[tx].iloc[3]+1
+                    
+                elif az>=270 and az<360 and link_table[tx].iloc[4]<4:
+                    link_table[tx].iloc[0]=link_table[tx].iloc[0]+1
+                    link_table[tx].iloc[4]=link_table[tx].iloc[4]+1
+            else :
+                link_list0.append(i) # LCTR 규칙으로 링크 해제된 목록
+
+                # if (link_table[tx].iloc[2]>=link_table[tx].iloc[1] or link_table[rx].iloc[2]>=link_table[rx].iloc[1]):
+                #     link_list0.append(i)
+                    
+                # elif link_table[tx].iloc[2]<link_table[tx].iloc[1] and link_table[rx].iloc[2]<link_table[rx].iloc[1]:
+                #     print('[',i,']link connect', tx,link_table[tx].iloc[2],'~~~',rx, link_table[rx].iloc[2])
+                #     link_table[tx].iloc[2]=link_table[tx].iloc[2]+1
+                #     link_table[rx].iloc[2]=link_table[rx].iloc[2]+1
+                        
+        link_list0 = list(set(link_list0)) #제거 리스트
+        
+        link_list1=[]
+        for i in link_list0: # 링크 연결 해제된 SLR들 목록
+            link_list1.append(link_tr2['Callsign'].iloc[i]) 
+        
+        for i in link_list0:
+           link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
+
+        link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거  
+        
+        # 섹터 제한된 소형 부대 다시 MLR에 붙이기 
+
+        for k in link_list1:
+            near_mlr_distance=35000 #max_distance
+            for i in range(0,len(link_tr2_bk.index)):
+                if link_tr2_bk['Callsign'].iloc[i]==k:
+                    mlr=link_tr2_bk['Callsign.1'].iloc[i]
+                    if near_mlr_distance>link_tr2_bk['Distance m'].iloc[i] and link_table[mlr].iloc[0]<8 :
+                        near_mlr_distance=link_tr2_bk['Distance m'].iloc[i]
+                        slr_index=i
+
+            link_tr2=pd.concat([link_tr2,link_tr2_bk.iloc[[slr_index]]],ignore_index=False)
+            link_table[mlr].iloc[0]=link_table[mlr].iloc[0]+1
+
+        #print(link_tr2)
+        print(link_table)
+
+        link_tr2.reset_index(drop=True,inplace=True)   
+
+        return link_tr2
+
+    def HlinkDraw(self):
+        
+        link_result=self.HlinkCSVopen()
+        #print(link_result)
         
         nodemap=self.nodeOnMap()
         link_map=folium.FeatureGroup(name='연결 링크',overlay=True).add_to(nodemap)
@@ -878,14 +1010,44 @@ class App(QWidget):
         self.web.load(QUrl('C:/gui/result_link.html'))
         link_result.to_csv('C:\\gui\\outcome\\result.csv') #링크 저장
 
-        
         return link_map
+    
+    def LlinkDraw(self):
+        
+        link_result=self.LlinkCSVopen()
+        #print(link_result)
+        
+        nodemap=self.nodeOnMap()
+        link_map=folium.FeatureGroup(name='연결 링크',overlay=True).add_to(nodemap)
+        
+
+        #링크 GUI에 그리기
+        for i in range(0,len(link_result.index)):
+            # TX : Long Lat / RX : Long1 Lat1
+            lat=link_result['Lat'].iloc[i]
+            long=link_result['Long'].iloc[i]
+            lat1=link_result['Lat.1'].iloc[i]
+            long1=link_result['Long.1'].iloc[i]
+            node_A=np.array([lat,long])
+            node_B=np.array([lat1,long1])
+            folium.vector_layers.PolyLine([node_A,node_B], tooltip="QAM", popup="QAM", color='yellow').add_to(link_map) #QAM : 툴팁 QAM + color blue
+
+
+        folium.LayerControl(autoZIndex=True).add_to(nodemap)
+
+        nodemap.save('C:/gui/result_link.html')
+        self.web.load(QUrl('C:/gui/result_link.html'))
+        link_result.to_csv('C:\\gui\\outcome\\result.csv') #링크 저장
+
+        return link_map
+
 
     def ResultBtnClicked(self):
         
         nodemap=self.nodeOnMap()
-        self.linkDraw().add_to(nodemap)
-        self.covResultBtnClicked().add_to(nodemap)
+        self.HlinkDraw().add_to(nodemap)
+        self.LlinkDraw().add_to(nodemap)
+        #self.covResultBtnClicked().add_to(nodemap)
         folium.LayerControl(autoZIndex=True).add_to(nodemap)
 
         nodemap.save('C:/gui/result_sum.html')
