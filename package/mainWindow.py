@@ -41,7 +41,7 @@ class App(QWidget):
         self.HEIGHT = 800
         self.SIZE = 40
         self.setupUI()
-        
+
         layer = "Satellite"
         tileType = "jpeg"
         self.map_tile = f"http://api.vworld.kr/req/wmts/1.0.0/{vworld_key}/{layer}/{{z}}/{{y}}/{{x}}.{tileType}"
@@ -52,7 +52,7 @@ class App(QWidget):
         self.node_url2='./img/소형.png'
         self.node_url3='./img/부대.png'
         self.node_url4='./img/소형부대.png'
-        
+
     def setupUI(self):
         self.setWindowTitle(self.TITLE)
         self.setWindowIcon(QIcon('./img/favicon.png'))
@@ -78,37 +78,37 @@ class App(QWidget):
         self.covResultBtn.setFixedHeight(self.SIZE)
         self.covResultBtn.setFixedWidth(100)
         self.covResultBtn.clicked.connect(self.covResultBtnClicked)
-        
+
         # "링크 출력" 버튼
         self.HlinkResultBtn = QPushButton("HCTR 링크")
         self.HlinkResultBtn.setFixedHeight(self.SIZE)
         self.HlinkResultBtn.setFixedWidth(100)
         self.HlinkResultBtn.clicked.connect(self.HlinkResultBtnClicked)
-        
+
         # "링크 출력" 버튼
-        self.LlinkResultBtn = QPushButton("LCTR 링크")
-        self.LlinkResultBtn.setFixedHeight(self.SIZE)
-        self.LlinkResultBtn.setFixedWidth(100)
-        self.LlinkResultBtn.clicked.connect(self.LlinkResultBtnClicked)
-        
+        # self.LlinkResultBtn = QPushButton("LCTR 링크")
+        # self.LlinkResultBtn.setFixedHeight(self.SIZE)
+        # self.LlinkResultBtn.setFixedWidth(100)
+        # self.LlinkResultBtn.clicked.connect(self.LlinkResultBtnClicked)
+
         # "전체 결과" 버튼
         self.ResultBtn = QPushButton("전체 결과")
         self.ResultBtn.setFixedHeight(self.SIZE)
         self.ResultBtn.setFixedWidth(100)
         self.ResultBtn.clicked.connect(self.ResultBtnClicked)
-        
+
         # "노드 추가" 버튼
         self.addNode = QPushButton("노드 추가")
         self.addNode.setFixedHeight(self.SIZE)
         self.addNode.setFixedWidth(100)
         self.addNode.clicked.connect(self.addNodeBtnClicked)
-        
+
         # "노드 삭제" 버튼
         self.delNode = QPushButton("노드 삭제")
         self.delNode.setFixedHeight(self.SIZE)
         self.delNode.setFixedWidth(100)
         self.delNode.clicked.connect(self.delNodeBtnClicked)
-        
+
         # "노드 저장" 버튼
         self.dbsave = QPushButton("저장")
         self.dbsave.setFixedHeight(self.SIZE)
@@ -131,12 +131,12 @@ class App(QWidget):
         # 테이블
         self.tableColumn = []
         self.tableWidget = QTableWidget()
-        
+
         # 우측 하단, 노드 추가, 노드 삭제, 저장 버튼 레이아웃 설정
         hbox = QHBoxLayout()
         hbox.addWidget(self.covResultBtn)
         hbox.addWidget(self.HlinkResultBtn)
-        hbox.addWidget(self.LlinkResultBtn)
+        # hbox.addWidget(self.LlinkResultBtn)
         hbox.addWidget(self.ResultBtn)
         hbox.addStretch(1)
         hbox.addWidget(self.addNode)
@@ -161,7 +161,7 @@ class App(QWidget):
 
         # layout 세팅
         self.setLayout(mainLay)
-    
+
     def createHCTRgroup(self):
         groupbox=QGroupBox("대용량전송장치(HCTR)")
 
@@ -169,7 +169,7 @@ class App(QWidget):
         clickbtn0=QPushButton("시나리오 파일 생성")
         clickbtn0.setFixedHeight(self.SIZE)
         clickbtn0.clicked.connect(self.newScenBtnClicked)
-        
+
         # csv 임포팅 버튼
         clickbtn1=QPushButton("시나리오 파일 열기")
         clickbtn1.setFixedHeight(self.SIZE)
@@ -184,7 +184,7 @@ class App(QWidget):
         clickbtn3 = QPushButton("링크 연결성 분석")
         clickbtn3.setFixedHeight(self.SIZE)
         clickbtn3.clicked.connect(self.HlinkBtnClicked)
-                
+
         # "중계소배치 시작" 버튼
         clickbtn4 = QPushButton("중계소 배치")
         clickbtn4.setFixedHeight(self.SIZE)
@@ -214,7 +214,7 @@ class App(QWidget):
         clickbtn0=QPushButton("시나리오 파일 생성")
         clickbtn0.setFixedHeight(self.SIZE)
         clickbtn0.clicked.connect(self.newLCTRScenBtnClicked)
-        
+
         # csv 임포팅 버튼
         clickbtn1=QPushButton("시나리오 파일 열기")
         clickbtn1.setFixedHeight(self.SIZE)
@@ -229,7 +229,7 @@ class App(QWidget):
         clickbtn3 = QPushButton("링크 연결성 분석")
         clickbtn3.setFixedHeight(self.SIZE)
         clickbtn3.clicked.connect(self.LlinkBtnClicked)
-                
+
         # "중계소배치 시작" 버튼
         clickbtn4 = QPushButton("중계소 배치")
         clickbtn4.setFixedHeight(self.SIZE)
@@ -254,10 +254,10 @@ class App(QWidget):
 
     def tblCellDblClicked(self):
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
-            print("row: {0}, col: {1}, contents: {2}".format(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text()))
+            # print("row: {0}, col: {1}, contents: {2}".format(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text()))
             currentQTableWidgetItem.setForeground(QBrush(QColor(255, 0, 0)))       
-      
-      
+
+
     def addNodeBtnClicked(self):
         self.tableWidget.insertRow(self.tableWidget.rowCount())
         for j in range(2,self.tableWidget.columnCount()) :
@@ -266,12 +266,12 @@ class App(QWidget):
             else :
                 item=QTableWidgetItem(self.tableWidget.item(0,j))
                 self.tableWidget.setItem(self.tableWidget.rowCount()-1, j, item)
-                
+
     def delNodeBtnClicked(self):
         rowNum=self.tableWidget.rowCount()
         self.tableWidget.removeRow(rowNum-1)
         #노드 선택해서 삭제
-        
+
     def nodeSet(self): # 불필요 컬럼 제거 및 '차량수' 컬럼 추가
         col_order=2
         Hctrlinkcnt=2 
@@ -304,10 +304,10 @@ class App(QWidget):
                 QTableWidgetItem(self.tableWidget.item(i,j)).setTextAlignment(Qt.AlignCenter)   
 
 
-        
-        
+
+
     def dbsaveBtnClicked(self):
-        
+
         #self.HTZDBconnect
         colCnt = self.tableWidget.columnCount()
         rowCnt = self.tableWidget.rowCount()
@@ -324,7 +324,7 @@ class App(QWidget):
                         df_list2.append('' if table_item is None else str(table_item.text()))
             df_list.append(df_list2)
         df = pd.DataFrame(df_list, columns=headers)
-        
+
         conn = pypyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=./data/HTZtables.mdb;')
         cursor = conn.cursor()
         cursor.execute('DELETE FROM STATIONX64')
@@ -356,17 +356,17 @@ class App(QWidget):
                         #{18} + 140, {19} + 140 : dBm + 140 = dBu
 
             cursor.execute(query)
-        
+
         cursor.commit()
 
         cursor.close()
         conn.close()
-        
+
         #지도에 노드 생성
         #m = folium.Map(location=[df.iloc[0, 3], df.iloc[0, 2]], zoom_start=11, tiles=self.map_tile, attr=self.attr)
         m = folium.Map(location=[df.iloc[0, 3], df.iloc[0, 2]], zoom_start=10)
         folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
-        
+
         icon_group= folium.FeatureGroup('부대 배치').add_to(m)
 
         for i in range(len(df.index)):
@@ -400,30 +400,30 @@ class App(QWidget):
                 folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node4).add_to(icon_group)
             else :
                 folium.Marker([lat, lon], popup=callSign, draggable=True, icon=folium.Icon(icon='cloud')).add_to(icon_group)
-        
+
         folium.LayerControl(autoZIndex=True).add_to(m)
 
         m.save('C:/gui/result3.html')
         self.web.load(QUrl('C:/gui/result3.html'))
-            
+
     def newScenBtnClicked(self):
-        
+
         # rename col
         data.columns = ['부대명','그룹','경도','위도','좌표계','안테나 높이 (m)','주파수 (MHz)','송신대역폭 (kHz)','수신대역폭 (kHz)','방위각 (deg)','출력 (W)','송신 안테나 이득 (dB)','수신 안테나 이득 (dB)','송신 손실 (dB)','수신 손실 (dB)','수평 안테나 패턴','수직 안테나 패턴','커버리지 수신감도 (dBm)','수신감도 (dBm)','signal (category)','기울기 (deg)','nfd','freqTx1','freqTx2','freqTx3','freqTx4','freqTx5','freqTx6','freqTx7','freqTx8','freqTx9','freqTx10','freqTx11','freqTx12','freqTx13','freqTx14','freqTx15','freqTx16','Downlink_cx']
 
         self.tableHdrLbl = list(data.columns)
-    
+
         self.tableWidget.setColumnCount(len(data.columns))
         self.tableWidget.setHorizontalHeaderLabels(self.tableHdrLbl)
         self.tableWidget.setRowCount(1)
-        
+
         default_format = pd.read_csv('./csv/hctr_default.csv')
         #m = folium.Map(location=[38, 128], zoom_start=10, tiles=self.map_tile, attr=self.attr) #노드 좌표 사용자 입력
         m = folium.Map(location=[38, 128], zoom_start=10)
         folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
         m.save('C:/gui/result2.html')
         self.web.load(QUrl('C:/gui/result2.html'))
-        
+
         for i in range(len(default_format.index)):
             for j in range(2,len(default_format.columns)):
                 QTableWidgetItem().setTextAlignment(1)
@@ -436,40 +436,40 @@ class App(QWidget):
         self.tableWidget.hideColumn(9)
         for i in range(11,39):
             self.tableWidget.hideColumn(i)
-            
+
         self.nodeSet()  #차량수 컬럼
-        
-            
-            
+
+
+
     def newLCTRScenBtnClicked(self):
-        
+
         # rename col
         data.columns = ['부대명','그룹','경도','위도','좌표계','안테나 높이 (m)','주파수 (MHz)','송신대역폭 (kHz)','수신대역폭 (kHz)','방위각 (deg)','출력 (W)','송신 안테나 이득 (dB)','수신 안테나 이득 (dB)','송신 손실 (dB)','수신 손실 (dB)','수평 안테나 패턴','수직 안테나 패턴','커버리지 수신감도 (dBm)','수신감도 (dBm)','signal (category)','기울기 (deg)','nfd','freqTx1','freqTx2','freqTx3','freqTx4','freqTx5','freqTx6','freqTx7','freqTx8','freqTx9','freqTx10','freqTx11','freqTx12','freqTx13','freqTx14','freqTx15','freqTx16','Downlink_cx']
 
         self.tableHdrLbl = list(data.columns)
-    
+
         self.tableWidget.setColumnCount(len(data.columns))
         self.tableWidget.setHorizontalHeaderLabels(self.tableHdrLbl)
         self.tableWidget.setRowCount(1)
-        
+
         default_format = pd.read_csv('./csv/lctr_default.csv')
         #m = folium.Map(location=[38, 128], zoom_start=10, tiles=self.map_tile, attr=self.attr) #노드 좌표 사용자 입력
         m = folium.Map(location=[38, 128], zoom_start=10)
         folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
         m.save('C:/gui/result2.html')
         self.web.load(QUrl('C:/gui/result2.html'))
-        
+
         for i in range(len(default_format.index)):
             for j in range(len(default_format.columns)):
                 QTableWidgetItem().setTextAlignment(Qt.AlignCenter)
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(default_format.iloc[i, j])))
-        
+
         self.nodeSet()  #차량수 컬럼
-        
+
 
     def csvOpenBtnClicked(self):
         fname = QFileDialog.getOpenFileName(self, '파일 열기', '', 'csv(*.csv)')
-        
+
         if fname[0]:
             data = pd.read_csv(fname[0])
 
@@ -477,7 +477,7 @@ class App(QWidget):
             data.columns = ['부대명','그룹','경도','위도','좌표계','안테나 높이 (m)','주파수 (MHz)','송신대역폭 (kHz)','수신대역폭 (kHz)','방위각 (deg)','출력 (W)','송신 안테나 이득 (dB)','수신 안테나 이득 (dB)','송신 손실 (dB)','수신 손실 (dB)','수평 안테나 패턴','수직 안테나 패턴','커버리지 수신감도 (dBm)','수신감도 (dBm)','signal (category)','기울기 (deg)','nfd','freqTx1','freqTx2','freqTx3','freqTx4','freqTx5','freqTx6','freqTx7','freqTx8','freqTx9','freqTx10','freqTx11','freqTx12','freqTx13','freqTx14','freqTx15','freqTx16','Downlink_cx']
 
             self.tableHdrLbl = list(data.columns)
-        
+
             self.tableWidget.setColumnCount(len(data.columns))
             self.tableWidget.setHorizontalHeaderLabels(self.tableHdrLbl)
             self.tableWidget.setRowCount(len(data.index))
@@ -525,12 +525,12 @@ class App(QWidget):
                 else :
                     folium.Marker([lat, lon], popup=callSign, draggable=True, icon=folium.Icon(icon='cloud')).add_to(icon_group)
 
-            
+
             folium.LayerControl(autoZIndex=True).add_to(m)
-            
+
             m.save('C:/gui/result.html')
             self.web.load(QUrl('C:/gui/result.html'))
-            
+
             # 불필요 파라미터 표시 제거
             self.tableWidget.hideColumn(4)
             self.tableWidget.hideColumn(7)
@@ -544,7 +544,7 @@ class App(QWidget):
             rowCnt = self.tableWidget.rowCount()
             headers = [str(self.tableWidget.horizontalHeaderItem(i).text()) for i in range(colCnt) ]
            #headers = [str(self.tableWidget.horizontalHeaderItem(i).text()) for i in range(colCnt) if i != 2]
-            
+
             df_list = []
             for row in range(rowCnt):
                 df_list2 = []
@@ -559,9 +559,9 @@ class App(QWidget):
                     #    df_list2.append('' if table_item is None else str(table_item.text()))
                 df_list.append(df_list2)
             df = pd.DataFrame(df_list, columns=headers)
-            
-            
-            
+
+
+
             conn = pypyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=./data/HTZtables.mdb;')
             cursor = conn.cursor()
             cursor.execute('DELETE FROM STATIONX64')
@@ -598,7 +598,7 @@ class App(QWidget):
 
             cursor.close()
             conn.close()
-            
+
             self.nodeSet()  #차량수 컬럼
         else:
             QMessageBox.about(self, 'Info', '파일을 선택하지 않았습니다.')
@@ -611,7 +611,7 @@ class App(QWidget):
     def HlinkBtnClicked(self):
         print('linkBtnClicked')
         os.system(".\\batch\\P2P_hctr.bat")
-    
+
     def LlinkBtnClicked(self):
         print('linkBtnClicked')
         os.system(".\\batch\\P2P_lctr.bat")
@@ -628,7 +628,7 @@ class App(QWidget):
         reply = QMessageBox.question(self, "종료", "프로그램을 종료하시겠습니까?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             sys.exit()
-    
+
     def nodeOnMap(self):
         m = folium.Map(location=[self.tableWidget.item(0,6).text(), self.tableWidget.item(0,5).text()], zoom_start=10)
         folium.TileLayer(tiles=self.map_tile, attr=self.attr, name=self.name, overlay= true, control=true).add_to(m)
@@ -659,12 +659,12 @@ class App(QWidget):
                 folium.Marker([lat, lon], popup=callSign, draggable=True, icon=icon_node4).add_to(icon_group)       
             else :
                 folium.Marker([lat, lon], popup=callSign, draggable=True, icon=folium.Icon(icon='cloud')).add_to(icon_group)       
-        
+
         folium.LayerControl(autoZIndex=True).add_to(m)
-        
+
         m.save('C:/gui/result_node.html')
         self.web.load(QUrl('C:/gui/result_node.html'))
-        
+
         return (icon_group)
 
     def covResultBtnClicked(self):  
@@ -683,17 +683,17 @@ class App(QWidget):
 
         #center_y=round((corner_top+corner_low)/2,5)
         #center_x=round((corner_left+corner_right)/2,5)
-        
+
         nodemap=self.nodeOnMap()
         # link_result=self.linkDraw()
         # link_map=folium.FeatureGroup(name='연결 링크',overlay=True)
 
         # link_map.add_child(link_result)
-  
+
         cov_map=folium.FeatureGroup('커버리지').add_to(nodemap)
 
         # nodemap.add_child(link_map)
-        
+
         folium.raster_layers.ImageOverlay(
             image=cov_file[0],
             name="커버리지",
@@ -709,15 +709,15 @@ class App(QWidget):
         cov_map.save('C:/gui/result_cov.html')
         self.web.load(QUrl('C:/gui/result_cov.html'))
         return (cov_map)
-        
+
     ###########################################link analysis#####################
     def HlinkResultBtnClicked(self):
         self.HlinkDraw()
-    
+
     def LlinkResultBtnClicked(self):
         self.LlinkDraw()
 
-        
+
     def HlinkCSVopen(self): # HCTR 링크 규칙
         #링크 파일 선택
         link_file=glob.glob('./outcome/P2P/hctr/*.CSV')
@@ -733,35 +733,35 @@ class App(QWidget):
         link_tr2.reset_index(drop=True,inplace=True)
 
         ###링크 형성 알고리즘###
-        
+
         #####[노드통신소 최대 링크 연결 개수 제한]
         link_tr2.reset_index(drop=True,inplace=True) # 인덱스 초기화
         link_list0=[]
-    
+
           ####노드통신소 최대 링크 연결 개수 제한 - 초기화
-        
+
         ###단방향만 고려하여 중복 제거
         link_list=[]
         for i in range(0,len(link_tr2.index)):
             if link_tr2['Address'].iloc[i]=='소형노드':
                 if link_tr2['Address.1'].iloc[i]=='대형부대' or link_tr2['Address.1'].iloc[i]=='대형노드':
                     link_list.append(i) # 제거 행 리스트
-                
+
             elif link_tr2['Address'].iloc[i]=='대형노드':
                 if link_tr2['Address.1'].iloc[i]=='대형노드':
                     for j in range(len(link_tr2.index)-i):
                         if(link_tr2['Callsign'].iloc[i]==link_tr2['Callsign.1'].iloc[j] and link_tr2['Callsign.1'].iloc[i]==link_tr2['Callsign'].iloc[j]) and j>i:
                             #link_table[link_tr2['Callsign'].iloc[i]][link_tr2['Callsign.1'].iloc[j]]
                             link_list.append(j)
-                            print(j,link_tr2['Address'].iloc[j], link_tr2['Address.1'].iloc[j], link_tr2['Callsign'].iloc[j], link_tr2['Callsign.1'].iloc[j])
+                            # print(j,link_tr2['Address'].iloc[j], link_tr2['Address.1'].iloc[j], link_tr2['Callsign'].iloc[j], link_tr2['Callsign.1'].iloc[j])
                             pass
             else :
                 link_list.append(i) # 제거 행 리스트
         for i in link_list:
             link_tr2=link_tr2.drop(i, axis=0) #노드 연결 규칙 적용
-        
+
         # link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거        
-        
+
         ###부대 통신소 가장 가까운 노드에 1개만 연결
         link_tr2.reset_index(drop=True,inplace=True)# 인덱스 초기화
         link_list2=[]
@@ -777,7 +777,7 @@ class App(QWidget):
             link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
 
         link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
-        
+
         ###소형 노드 통신소 가장 가까운 대형 노드에 1개만 연결
         link_tr2.reset_index(drop=True,inplace=True)# 인덱스 초기화
         link_list2=[]
@@ -793,29 +793,29 @@ class App(QWidget):
             link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
 
         link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
-        
+
         # sort(True 면 대형노드 부터, False면 중형부대 부터 )
         link_tr2.sort_values(['Address.1','Callsign.1'], ascending=False,inplace=True) 
-        print(link_tr2)
-        
+        # print(link_tr2)
+
         #####[노드통신소 최대 링크 연결 개수 제한]
         link_tr2.reset_index(drop=True,inplace=True) # 인덱스 초기화
         link_list0=[]
         link_col=[]
         link_row=['0','1','2'] # 0 : full link, 1: 최대 링크 수, 2 : 연결된 링크 수
-        
+
         for i in range(self.tableWidget.rowCount()):
             link_col.append(self.tableWidget.item(i,0).text())
 
         link_table = pd.DataFrame(index=link_row,columns=link_col)
         link_table.reset_index()
         link_table=link_table.fillna(0)
-        
+
         for i in range(self.tableWidget.rowCount()):
             link_table.iloc[1,i]=2*int(self.tableWidget.item(i,2).text()) #hctr 차량수
         tx=''
         rx=''   ####노드통신소 최대 링크 연결 개수 제한 - 초기화 
-        
+
         ###최대 링크 연결 제한 - 차량수
         for i in range(len(link_tr2.index)):
             for j in range(self.tableWidget.rowCount()):
@@ -824,20 +824,20 @@ class App(QWidget):
                     rx=link_tr2['Callsign.1'].iloc[i]
                     link_table[tx].iloc[0]=link_table[tx].iloc[0]+1
                     link_table[rx].iloc[0]=link_table[rx].iloc[0]+1
-                    
+
                     if (link_table[tx].iloc[2]>=link_table[tx].iloc[1] or link_table[rx].iloc[2]>=link_table[rx].iloc[1]):
                         link_list0.append(i)
-                        
+
                     elif link_table[tx].iloc[2]<link_table[tx].iloc[1] and link_table[rx].iloc[2]<link_table[rx].iloc[1]:
                         print('[',i,']link connect', tx,link_table[tx].iloc[2],'~~~',rx, link_table[rx].iloc[2])
                         link_table[tx].iloc[2]=link_table[tx].iloc[2]+1
                         link_table[rx].iloc[2]=link_table[rx].iloc[2]+1
-                        
+
 
         link_list0 = list(set(link_list0)) #제거 리스트
-        print(link_table)
-        print(link_list0)
-        
+        # print(link_table)
+        # print(link_list0)
+
         for i in link_list0:
            link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
 
@@ -860,12 +860,12 @@ class App(QWidget):
         link_tr2.reset_index(drop=True,inplace=True)
 
         # ###링크 형성 알고리즘###
-        
+
         # #####[노드통신소 최대 링크 연결 개수 제한]
         link_tr2.reset_index(drop=True,inplace=True) # 인덱스 초기화
-        
+
         ####노드통신소 최대 링크 연결 개수 제한 - 초기화
-        
+
         ###단방향만 고려하여 중복 제거
         link_list=[]
         for i in range(0,len(link_tr2.index)):
@@ -891,13 +891,13 @@ class App(QWidget):
         for i in link_list2:
             link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
         link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거
-        
+
         #####[노드통신소 최대 링크 연결 개수 제한]
         link_tr2.reset_index(drop=True,inplace=True) # 인덱스 초기화
         link_list0=[]
         link_col=[]
         link_row=['0','1','2','3','4'] # 0 : MLR 전체 링크 수, 1: 1섹터(0~89) 링크 수 , 2 : 2섹터(90~179) 링크 수, 3 : 3섹터(180~269) 링크 수, 4 : 4섹터(270~359) 링크 수
-        
+
         for i in range(len(link_tr2.index)):
             if link_tr2['Address.1'].iloc[i] != '소형부대' : 
                 link_col.append(link_tr2['Callsign.1'].iloc[i])
@@ -907,9 +907,9 @@ class App(QWidget):
         link_table = pd.DataFrame(index=link_row,columns=link_col)
         link_table.reset_index()
         link_table=link_table.fillna(0)
-    
+
         tx=''   ####노드통신소 최대 링크 연결 개수 제한 - 초기화 
-        
+
         ###최대 링크 연결 제한 - 섹터별
         for i in range(len(link_tr2.index)):
             tx=link_tr2['Callsign.1'].iloc[i]
@@ -918,15 +918,15 @@ class App(QWidget):
                 if az>=0 and az<90 and link_table[tx].iloc[1]<4:    #섹터별 4개 제한
                     link_table[tx].iloc[0]=link_table[tx].iloc[0]+1
                     link_table[tx].iloc[1]=link_table[tx].iloc[1]+1
-                    
+
                 elif az>=90 and az<180 and link_table[tx].iloc[2]<4:
                     link_table[tx].iloc[0]=link_table[tx].iloc[0]+1
                     link_table[tx].iloc[2]=link_table[tx].iloc[2]+1
-                    
+
                 elif az>=180 and az<270 and link_table[tx].iloc[3]<4:
                     link_table[tx].iloc[0]=link_table[tx].iloc[0]+1
                     link_table[tx].iloc[3]=link_table[tx].iloc[3]+1
-                    
+
                 elif az>=270 and az<360 and link_table[tx].iloc[4]<4:
                     link_table[tx].iloc[0]=link_table[tx].iloc[0]+1
                     link_table[tx].iloc[4]=link_table[tx].iloc[4]+1
@@ -935,23 +935,23 @@ class App(QWidget):
 
                 # if (link_table[tx].iloc[2]>=link_table[tx].iloc[1] or link_table[rx].iloc[2]>=link_table[rx].iloc[1]):
                 #     link_list0.append(i)
-                    
+
                 # elif link_table[tx].iloc[2]<link_table[tx].iloc[1] and link_table[rx].iloc[2]<link_table[rx].iloc[1]:
                 #     print('[',i,']link connect', tx,link_table[tx].iloc[2],'~~~',rx, link_table[rx].iloc[2])
                 #     link_table[tx].iloc[2]=link_table[tx].iloc[2]+1
                 #     link_table[rx].iloc[2]=link_table[rx].iloc[2]+1
-                        
+
         link_list0 = list(set(link_list0)) #제거 리스트
-        
+
         link_list1=[]
         for i in link_list0: # 링크 연결 해제된 SLR들 목록
             link_list1.append(link_tr2['Callsign'].iloc[i]) 
-        
+
         for i in link_list0:
            link_tr2=link_tr2.drop(i, axis=0) #규칙 적용
 
         link_tr2.reset_index(drop=True,inplace=True)        #제거 행 리스트 중복 제거  
-        
+
         # 섹터 제한된 소형 부대 다시 MLR에 붙이기 
 
         for k in link_list1:
@@ -974,13 +974,13 @@ class App(QWidget):
         return link_tr2
 
     def HlinkDraw(self):
-        
+
         link_result=self.HlinkCSVopen()
         #print(link_result)
-        
+
         nodemap=self.nodeOnMap()
         link_map=folium.FeatureGroup(name='연결 링크',overlay=True).add_to(nodemap)
-        
+
         #변조방식 추천 기능 - 1
         # user_mod, ok = QInputDialog.getText(self, "변조방식", "QAM 신호레벨(dBm)")
         # if ok :
@@ -1011,15 +1011,15 @@ class App(QWidget):
         link_result.to_csv('C:\\gui\\outcome\\result.csv') #링크 저장
 
         return link_map
-    
+
     def LlinkDraw(self):
-        
+
         link_result=self.LlinkCSVopen()
         #print(link_result)
-        
+
         nodemap=self.nodeOnMap()
         link_map=folium.FeatureGroup(name='연결 링크',overlay=True).add_to(nodemap)
-        
+
 
         #링크 GUI에 그리기
         for i in range(0,len(link_result.index)):
@@ -1043,7 +1043,7 @@ class App(QWidget):
 
 
     def ResultBtnClicked(self):
-        
+
         nodemap=self.nodeOnMap()
         self.HlinkDraw().add_to(nodemap)
         self.LlinkDraw().add_to(nodemap)
