@@ -1,0 +1,37 @@
+    def paintEvent(self, e):
+        #painter = self.web.paintEngine()
+        painter = QPainter(self)
+        #painter.drawPixmap(QPoint(),self.pix)
+        #self.web.load(QUrl('C:/gui/result.html'))
+        painter.drawPoint(QPoint())
+        if not self.begin.isNull() and not self.destination.isNull():
+            rect = QRect(self.begin, self.destination)
+            painter.drawRect(rect.normalized())
+    
+    
+    def mousePressEvent(self, event):
+        if event.buttons() & Qt.LeftButton:
+            print('Point 1')
+            self.begin = event.pos()
+            self.destination = self.begin
+            self.update()
+
+    def mouseMoveEvent(self, event):
+        if event.buttons() & Qt.LeftButton:		
+            print('Point 2')	
+            self.destination = event.pos()
+            self.update()
+
+    def mouseReleaseEvent(self, event):
+        print('Point 3')
+        if event.button() & Qt.LeftButton:
+            rect = QRect(self.begin, self.destination)
+            painter = QPainter(self)
+            painter.drawRect(rect.normalized())
+
+            self.begin, self.destination = self.web.pos(), self.web.pos()
+            self.update()
+
+        # Ploc=[]
+        # Ploc.append([x,y])
+        print(self.begin,self.destination)
