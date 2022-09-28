@@ -1,0 +1,3 @@
+From Tx #;Long;Lat;Callsign;Address;NetID;Rad. Power (W);Height (m);Azimuth (deg);Antenna;To Rx #;Long;Lat;Callsign;Address;NetID;Height (m);Azimuth (deg);Antenna;FSR dBuV/m;Pr dBm; ToA us;cx #;Frequency MHz;Polar;Distance m;Azimuth Tx->Rx (deg);Tilt Tx->Rx (deg);Azimuth Rx->Tx (deg);Tilt Rx->Tx (deg);Ant_Tx_atten (dB);Ant_Rx_atten (dB);Path loss (dB);Path;Resolution (m)
+1;127.031936;37.956326;sample16;대형노드;;89.125094;10.00;0.00;nan;2;126.930954;37.951893;sample5;중형부대;;10.00;0.00;nan;13.5;-107.32;29.69;1;1429.5;V;8900.03;266.78;-2.10;86.78;2.04;0.0;0.0;176.3;NLOS;20.00
+2;126.930954;37.951893;sample5;중형부대;;89.125094;10.00;0.00;nan;1;127.031936;37.956326;sample16;대형노드;;10.00;0.00;nan;13.5;-107.32;29.69;1;1429.5;V;8899.69;86.78;2.04;266.78;-2.10;0.0;0.0;176.3;NLOS;20.00
