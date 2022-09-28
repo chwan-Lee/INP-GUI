@@ -1,0 +1,12 @@
+22/6/2022 17:17:58
+
+Station #,Callsign,Address,NetID,cx,Assigned Tx frequency (MHz),Assigned Rx frequency (MHz),User
+1,CC,CC,,1,1435.000000,1435.000000,
+2,MU01,MU,,1,1465.000000,1465.000000,
+3,MU02,MU,,1,1405.000000,1405.000000,
+4,MU03,MU,,1,1440.000000,1440.000000,
+5,MU04,MU,,1,1490.000000,1490.000000,
+6,MU05,MU,,1,1430.000000,1430.000000,
+
+Linked to C:\ATDI\HTZ warfare x64\BASE\XLS\XLS_523.XLSx
+To create an XLSx template: save this file as C:\ATDI\HTZ warfare x64\BASE\XLS\XLS_523.CSV

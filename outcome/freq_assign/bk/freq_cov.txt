@@ -1,0 +1,54 @@
+22/6/2022 16:3:0
+
+Address,#,Callsign,Frequency MHz,Polarization
+0001 <- 0002 - C/I nedeed: 0.0 dB - F(0001):   1450.0000, F(0002): 1455 Mhz - (case checked)
+0001 <- 0005 - C/I nedeed: 0.0 dB - F(0001):   1450.0000, F(0005): 1445 Mhz - (case checked)
+0002 <- 0001 - C/I nedeed: 0.0 dB - F(0002):   1455.0000, F(0001): 1450 Mhz - (case checked)
+0002 <- 0005 - C/I nedeed: -10.0 dB - F(0002):   1455.0000, F(0005): 1445 Mhz - (case checked)
+0003 <- 0004 - C/I nedeed: -20.0 dB - F(0003):   1420.0000, F(0004): 1405 Mhz - (case checked)
+0003 <- 0006 - C/I nedeed: -20.0 dB - F(0003):   1420.0000, F(0006): 1405 Mhz - (case checked)
+0004 <- 0003 - C/I nedeed: -20.0 dB - F(0004):   1405.0000, F(0003): 1420 Mhz - (case checked)
+0005 <- 0001 - C/I nedeed: 0.0 dB - F(0005):   1445.0000, F(0001): 1450 Mhz - (case checked)
+0005 <- 0002 - C/I nedeed: -10.0 dB - F(0005):   1445.0000, F(0002): 1455 Mhz - (case checked)
+0006 <- 0003 - C/I nedeed: -20.0 dB - F(0006):   1405.0000, F(0003): 1420 Mhz - (case checked)
+0001 <- 0003 - C/I nedeed: -20.0 dB - F(0001):   1455.0000, F(0003): 1440 Mhz - (case checked)
+0001 <- 0004 - C/I nedeed: 0.0 dB - F(0001):   1455.0000, F(0004): 1450 Mhz - (case checked)
+0001 <- 0005 - C/I nedeed: -30.0 dB - F(0001):   1455.0000, F(0005): 1475 Mhz - (case checked)
+0001 <- 0006 - C/I nedeed: -20.0 dB - F(0001):   1455.0000, F(0006): 1440 Mhz - (case checked)
+0002 <- 0003 - C/I nedeed: -20.0 dB - F(0002):   1425.0000, F(0003): 1440 Mhz - (case checked)
+0002 <- 0006 - C/I nedeed: -20.0 dB - F(0002):   1425.0000, F(0006): 1440 Mhz - (case checked)
+0003 <- 0001 - C/I nedeed: -20.0 dB - F(0003):   1440.0000, F(0001): 1455 Mhz - (case checked)
+0003 <- 0002 - C/I nedeed: -20.0 dB - F(0003):   1440.0000, F(0002): 1425 Mhz - (case checked)
+0003 <- 0004 - C/I nedeed: -10.0 dB - F(0003):   1440.0000, F(0004): 1450 Mhz - (case checked)
+0003 <- 0006 - C/I nedeed: 1.0 dB - F(0003):   1440.0000, F(0006): 1440 Mhz - (case checked)
+0004 <- 0001 - C/I nedeed: 0.0 dB - F(0004):   1450.0000, F(0001): 1455 Mhz - (case checked)
+0004 <- 0003 - C/I nedeed: -10.0 dB - F(0004):   1450.0000, F(0003): 1440 Mhz - (case checked)
+0005 <- 0001 - C/I nedeed: -30.0 dB - F(0005):   1475.0000, F(0001): 1455 Mhz - (case checked)
+0006 <- 0001 - C/I nedeed: -20.0 dB - F(0006):   1440.0000, F(0001): 1455 Mhz - (case checked)
+0006 <- 0002 - C/I nedeed: -20.0 dB - F(0006):   1440.0000, F(0002): 1425 Mhz - (case checked)
+0006 <- 0003 - C/I nedeed: 1.0 dB - F(0006):   1440.0000, F(0003): 1440 Mhz - (case checked)
+CC,1,CC,1455.000000,V
+MU,2,MU01,1425.000000,V
+MU,3,MU02,1440.000000,V
+MU,4,MU03,1450.000000,V
+MU,5,MU04,1475.000000,V
+MU,6,MU05,1440.000000,V
+0001 <- 0003 - C/I nedeed: -20.0 dB - F(0001):   1455.0000, F(0003): 1440 Mhz - (case checked)
+0001 <- 0004 - C/I nedeed: 0.0 dB - F(0001):   1455.0000, F(0004): 1450 Mhz - (case checked)
+0001 <- 0005 - C/I nedeed: -30.0 dB - F(0001):   1455.0000, F(0005): 1475 Mhz - (case checked)
+0001 <- 0006 - C/I nedeed: -20.0 dB - F(0001):   1455.0000, F(0006): 1440 Mhz - (case checked)
+0002 <- 0003 - C/I nedeed: -20.0 dB - F(0002):   1425.0000, F(0003): 1440 Mhz - (case checked)
+0002 <- 0006 - C/I nedeed: -20.0 dB - F(0002):   1425.0000, F(0006): 1440 Mhz - (case checked)
+0003 <- 0001 - C/I nedeed: -20.0 dB - F(0003):   1440.0000, F(0001): 1455 Mhz - (case checked)
+0003 <- 0002 - C/I nedeed: -20.0 dB - F(0003):   1440.0000, F(0002): 1425 Mhz - (case checked)
+0003 <- 0004 - C/I nedeed: -10.0 dB - F(0003):   1440.0000, F(0004): 1450 Mhz - (case checked)
+0003 <- 0006 - C/I nedeed: 1.0 dB - F(0003):   1440.0000, F(0006): 1440 Mhz - (case checked)
+0004 <- 0001 - C/I nedeed: 0.0 dB - F(0004):   1450.0000, F(0001): 1455 Mhz - (case checked)
+0004 <- 0003 - C/I nedeed: -10.0 dB - F(0004):   1450.0000, F(0003): 1440 Mhz - (case checked)
+0005 <- 0001 - C/I nedeed: -30.0 dB - F(0005):   1475.0000, F(0001): 1455 Mhz - (case checked)
+0006 <- 0001 - C/I nedeed: -20.0 dB - F(0006):   1440.0000, F(0001): 1455 Mhz - (case checked)
+0006 <- 0002 - C/I nedeed: -20.0 dB - F(0006):   1440.0000, F(0002): 1425 Mhz - (case checked)
+0006 <- 0003 - C/I nedeed: 1.0 dB - F(0006):   1440.0000, F(0003): 1440 Mhz - (case checked)
+
+Linked to C:\ATDI\HTZ warfare x64\BASE\XLS\XLS_543.XLSx
+To create an XLSx template: save this file as C:\ATDI\HTZ warfare x64\BASE\XLS\XLS_543.CSV
