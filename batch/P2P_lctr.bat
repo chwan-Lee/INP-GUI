@@ -1,4 +1,4 @@
-move "C:\gui\outcome\P2P\*.*" "C:\gui\outcome\P2P\Backup\" 
+move "C:\gui\outcome\P2P\lctr\*.*" "C:\gui\outcome\P2P\lctr\Backup\" 
 
 rem coverage calculation
 rem "C:\ATDI\HTZ warfare x64\HTZwx64.exe" "C:\HTZ PROJECT\INP.PRO" -ADMIN 1022 1 30
