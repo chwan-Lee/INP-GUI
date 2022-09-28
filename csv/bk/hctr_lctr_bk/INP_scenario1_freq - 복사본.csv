@@ -1,0 +1,5 @@
+ID,CS_TX,CS_RX,LINKNAME,BITRATE,HANDOVER
+1,sample6,sample17,1,0.256,0
+2,sample14,sample18,13,0.256,0
+3,sample17,sample14,20,0.256,0
+4,sample18,sample6,111,0.256,0

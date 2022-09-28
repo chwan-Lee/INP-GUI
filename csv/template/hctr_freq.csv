@@ -1,0 +1,2 @@
+CodeOut,Antenna (m),Frequency MHz,Tx bandwidth kHz,Rx bandwidth kHz,Nominal power (W),Tx antenna gain (dB),Rx antenna gain (dB),Tx losses (dB),Rx losses (dB),Plan,Pattern H,Pattern V,Coverage threshold (dBm),Rx threshold (dBm),signal(category),nfd,WiencodeH,WiencodeV,Spacing
+4DEC,10,1429.5,15000,15000,1,20,20,0.5,0.5,HCTR,HCTR.SPH,HCTR.SPV,-70,-70,2,B3N16,HCTR.SPH,HCTR.SPV,-125

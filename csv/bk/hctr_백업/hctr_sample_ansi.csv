@@ -1,0 +1,6 @@
+Callsign,Address,Xo,Yo,CodeOut,Antenna (m),Frequency MHz,Tx bandwidth kHz,Rx bandwidth kHz,Azimuth (deg),Nominal power (W),Tx antenna gain (dB),Rx antenna gain (dB),Tx losses (dB),Rx losses (dB),Pattern H,Pattern V,Coverage threshold (dBm),Rx threshold (dBm),signal(category),Tilt (deg),nfd,freqTxNum,freqTx1,freqTx2,freqTx3,freqTx4,freqTx5,freqTx6,freqTx7,freqTx8,freqTx9,freqTx10,freqTx11,freqTx12,freqTx13,freqTx14,freqTx15,freqTx16,freqRxNum,freqRx1,freqRx2,freqRx3,freqRx4,freqRx5,freqRx6,freqRx7,freqRx8,freqRx9,freqRx10,freqRx11,freqRx12,freqRx13,freqRx14,freqRx15,freqRx16
+hctr1,A,128.574875,37.651914,4DEC,30,1429.5,5000,5000,0,1,20,20,0.5,0.5,,,-77,-77,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+hctr2,B,128.650085,37.716153,4DEC,30,1429.5,5000,5000,0,1,20,20,0.5,0.5,,,-77,-77,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+hctr3,A,128.679764,37.675137,4DEC,30,1429.5,5000,5000,0,1,20,20,0.5,0.5,,,-77,-77,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+hctr4,B,128.731506,37.665173,4DEC,30,1429.5,5000,5000,0,1,20,20,0.5,0.5,,,-77,-77,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+hctr5,C,128.70369,37.703319,4DEC,30,1429.5,5000,5000,0,1,20,20,0.5,0.5,,,-77,-77,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

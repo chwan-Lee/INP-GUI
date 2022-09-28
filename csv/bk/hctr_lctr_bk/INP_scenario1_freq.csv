@@ -1,0 +1,5 @@
+ID,CS_TX,CS_RX,BITRATE
+1,sample6,sample17,0.256
+2,sample14,sample18,0.256
+3,sample17,sample14,0.256
+4,sample18,sample6,0.256

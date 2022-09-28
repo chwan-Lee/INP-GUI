@@ -1,0 +1,13 @@
+,CS_TX,CS_RX
+0,1SmNode,7MidCom
+1,3BigNode,6MidCom
+2,2SmNode,3MidCom
+3,2SmNode3,2MidCom
+4,1BigNode,3SmNode0
+5,1BigNode5,2SmNode1
+6,3SmNode,1SmNode2
+7,3BigNode7,1BigCom
+8,3BigNode0,4BigNode4
+9,1BigNode1,3BigNode5
+10,4BigNode,3BigNode6
+11,1BigNode3,2BigNode

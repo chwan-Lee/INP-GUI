@@ -1,0 +1,21 @@
+
+        
+        #임시 lctr 링크 그리기
+        folium.vector_layers.PolyLine([[38.11665089,127.2731207],[38.137517,127.288026]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.11665089,127.2731207],[38.128291,127.302817]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.11665089,127.2731207],[38.132365,127.255842]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.11665089,127.2731207],[38.106859,127.298853]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.11665089,127.2731207],[38.110946,127.320762]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.11665089,127.2731207],[38.102348,127.301571]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.11665089,127.2731207],[38.109419,127.283584]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.11665089,127.2731207],[38.107298,127.265867]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.07542292,127.2581531],[38.085873,127.258189]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.0821108,127.2003889],[38.093867,127.22607]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.0821108,127.2003889],[38.109821,127.221444]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.09128,127.054479],[38.098024,127.068301]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.052879,127.053312],[38.034791,127.044552]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.031864,126.976398],[38.036953,126.959122]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.00742,126.916831],[38.003387,126.884679]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[37.96010249,126.9322007],[37.947188,126.904793]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.07542292,127.2581531],[38.102019,127.2888]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)
+        folium.vector_layers.PolyLine([[38.07542292,127.2581531],[38.09319,127.288994]], tooltip="lctr", popup="lctr", color='yellow').add_to(link_map)      
